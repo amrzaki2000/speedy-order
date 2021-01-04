@@ -27,6 +27,8 @@
     
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <form id="form1" runat="server">
@@ -43,6 +45,7 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
                             <a class="nav-link" href="homepage.aspx">Home</a>
@@ -76,13 +79,15 @@
  
                         </li>
                     </ul>
+                                <img src="imgs/cart.png" width="30px" height="30px" />
+
                 </div>
 
             </nav>
         </div>
 
         <!-- Main Content Placeholder -->
-        <div class="row" style="min-height:500px">
+        <div class="row">
             <div class="col-2">
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
@@ -92,13 +97,85 @@
                     </div>
         </div>
         <!-- Main Content Placeholder -->
- 
+       </div>  <!--Header-->
+
+        <!--   Featured Categories-->
+        <div class="categories">
+            <div class="small-container"> 
+                <div class="row2">
+                <div class="col-3">   <img src="imgs/category-1.jpg"/>  </div>
+                <div class="col-3"> <img src="imgs/category-2.jpg"/>  </div>
+                <div class="col-3"> <img src="imgs/category-3.jpg"/>  </div>
+            </div>
+            </div>
+            
+        </div> <!--  End Featured Categories-->
+         <!--   Featured products-->
+        <div class="small-container">
+            <h2 class="title">Featured Products</h2>
+            <div class="row2">
+                <div class="col-4">   
+                    <img src="imgs/product-1.jpg"/>  
+                    <h4>Red Printed T-shirt</h4>
+                     <div class="rating">
+                         <i class="fa fa-star" ></i>
+                         <i class="fa fa-star" ></i>
+                         <i class="fa fa-star" ></i>
+                         <i class="fa fa-star" ></i>
+                         <i class="fa fa-star-o" aria-hidden="false"></i>
+
+                     </div>
+                    <p>$50.00</p>
+                </div>
+                <div class="col-4">   
+                    <img src="imgs/product-2.jpg"/>  
+                    <h4>Red Printed T-shirt</h4>
+                     <div class="rating">
+                         <i class="fa fa-star" ></i>
+                         <i class="fa fa-star" ></i>
+                         <i class="fa fa-star" ></i>
+                         <i class="fa fa-star" ></i>
+                         <i class="fa fa-star-o" aria-hidden="false"></i>
+
+                     </div>
+                    <p>$50.00</p>
+                </div>
+                <div class="col-4">   
+                    <img src="imgs/product-3.jpg"/>  
+                    <h4>Red Printed T-shirt</h4>
+                     <div class="rating">
+                         <i class="fa fa-star" ></i>
+                         <i class="fa fa-star" ></i>
+                         <i class="fa fa-star" ></i>
+                         <i class="fa fa-star" ></i>
+                         <i class="fa fa-star-o" aria-hidden="false"></i>
+
+                     </div>
+                    <p>$50.00</p>
+                </div>
+                <div class="col-4">   
+                    <img src="imgs/product-4.jpg"/>  
+                    <h4>Red Printed T-shirt</h4>
+                     <div class="rating">
+                         <i class="fa fa-star" ></i>
+                         <i class="fa fa-star" ></i>
+                         <i class="fa fa-star" ></i>
+                         <i class="fa fa-star" ></i>
+                         <i class="fa fa-star-half-o" ></i>
+
+                     </div>
+                    <p>$50.00</p>
+                </div>
+                
+
+            </div>
+            </div>
         <footer>
             <div id="footer1" class="container-fluid">
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                         <p>
-                            <asp:LinkButton class="footerlinks" ID="LinkButton6" OnClick="Page_Load" runat="server">Admin Login</asp:LinkButton>
+                            <asp:LinkButton class="footerlinks" ID="LinkButton6" runat="server">Admin Login</asp:LinkButton>
                             &nbsp;
                             <asp:LinkButton class="footerlinks" ID="LinkButton11" runat="server">Author Management</asp:LinkButton>
                             &nbsp;
@@ -126,7 +203,7 @@
             </div>
  
         </footer>
-        </div>
+        
     </form>
 </body>
 </html>

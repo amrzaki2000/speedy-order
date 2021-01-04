@@ -1723,9 +1723,17 @@
     <Content Include="fontawesome\webfonts\fa-brands-400.svg" />
     <Content Include="fontawesome\webfonts\fa-regular-400.svg" />
     <Content Include="fontawesome\webfonts\fa-solid-900.svg" />
+    <Content Include="imgs\cart.png" />
+    <Content Include="imgs\category-1.jpg" />
+    <Content Include="imgs\category-2.jpg" />
+    <Content Include="imgs\category-3.jpg" />
     <Content Include="imgs\ecommerce.png" />
     <Content Include="imgs\logo.png" />
     <Content Include="imgs\pineapple.png" />
+    <Content Include="imgs\product-1.jpg" />
+    <Content Include="imgs\product-2.jpg" />
+    <Content Include="imgs\product-3.jpg" />
+    <Content Include="imgs\product-4.jpg" />
     <Content Include="memberSignup.aspx" />
     <Content Include="userlogin.aspx" />
     <Content Include="Web.config" />
