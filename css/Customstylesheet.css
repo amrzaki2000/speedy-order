@@ -1,0 +1,46 @@
+﻿.footerlinks {
+    color: #ffffff;
+    text-decoration: none !important;
+}
+
+    .footerlinks:hover {
+        color: #ffe762;
+    }
+
+#footer1 {
+    background: #bab3b3;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+}
+
+#footer2 {
+    background: #663344;
+}
+.nav-item {
+    
+}
+.collapse navbar-collapse {
+    
+}
+.header{
+    background: radial-gradient(#fff,#ffd6d6)
+}
+.row{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    
+}
+.col-2 {
+    flex-basis: 50%;
+    min-width: 600px;
+}
+.col-2 img{
+    max-width: 100%;
+    padding:  10px 0px;
+    
+
+}
