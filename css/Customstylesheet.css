@@ -21,13 +21,8 @@
 body {
     font-family: 'Poppins', sans-serif;
 }
-.nav-item {
-    
-}
-.collapse navbar-collapse {
-    
-}
-.header{
+
+.Banner{
     background: radial-gradient(#fff,#ffd6d6)
 }
 .row {
@@ -123,4 +118,35 @@ h4{
 
 .logo{
     float:left;
+}
+
+/*View products page*/
+.row-2{
+    justify-content: space-between;
+    margin: 100px auto 50px;
+}
+select{
+    border: 3px solid #555;
+    padding: 5px;
+}
+select:focus{
+    outline:none;
+}
+
+.page-btn{
+    margin: 0 auto 80px;
+}
+.page-btn span{
+    display: inline-block;
+    border: 1px solid #555;
+    margin-left: 10px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+}
+.page-btn span:hover{
+    background: #ff523b;
+    color:#fff;
 }

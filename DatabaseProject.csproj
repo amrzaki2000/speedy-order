@@ -1731,12 +1731,22 @@
     <Content Include="imgs\logo.png" />
     <Content Include="imgs\pineapple.png" />
     <Content Include="imgs\product-1.jpg" />
+    <Content Include="imgs\product-10.jpg" />
+    <Content Include="imgs\product-11.jpg" />
+    <Content Include="imgs\product-12.jpg" />
     <Content Include="imgs\product-2.jpg" />
     <Content Include="imgs\product-3.jpg" />
     <Content Include="imgs\product-4.jpg" />
+    <Content Include="imgs\product-6.jpg" />
+    <Content Include="imgs\product-7.jpg" />
+    <Content Include="imgs\product-8.jpg" />
+    <Content Include="imgs\product-9.jpg" />
+    <Content Include="imgs\product-a.jpg" />
+    <Content Include="imgs\product-a2.png" />
     <Content Include="memberSignup.aspx" />
     <Content Include="userlogin.aspx" />
     <Content Include="userprofile.aspx" />
+    <Content Include="viewproducts.aspx" />
     <Content Include="Web.config" />
     <Content Include="WebForm1.aspx" />
   </ItemGroup>
@@ -1783,6 +1793,13 @@
     </Compile>
     <Compile Include="userprofile.aspx.designer.cs">
       <DependentUpon>userprofile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="viewproducts.aspx.cs">
+      <DependentUpon>viewproducts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="viewproducts.aspx.designer.cs">
+      <DependentUpon>viewproducts.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
