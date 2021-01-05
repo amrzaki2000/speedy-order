@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="adminlogin.aspx" />
+    <Content Include="adminmanagement.aspx" />
     <Content Include="bootstrap\css\bootstrap.min.css" />
     <Content Include="bootstrap\js\bootstrap.min.js" />
     <Content Include="bootstrap\js\jquery-3.3.1.slim.min.js" />
@@ -1747,6 +1748,13 @@
     </Compile>
     <Compile Include="adminlogin.aspx.designer.cs">
       <DependentUpon>adminlogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="adminmanagement.aspx.cs">
+      <DependentUpon>adminmanagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="adminmanagement.aspx.designer.cs">
+      <DependentUpon>adminmanagement.aspx</DependentUpon>
     </Compile>
     <Compile Include="memberSignup.aspx.cs">
       <DependentUpon>memberSignup.aspx</DependentUpon>
