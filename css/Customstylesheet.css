@@ -30,7 +30,7 @@ body {
 .header{
     background: radial-gradient(#fff,#ffd6d6)
 }
-.row{
+.row {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -47,9 +47,12 @@ body {
     
 
 }
-.nav-link:hover{
-    color:#ffffff;
+.nav-item:hover {
+    background-color: #fff;
+    transition: 0.8s;
+    border-radius: 20%;
 }
+
 
 .categories{
     margin: 70px 0 30px 30px;
@@ -116,4 +119,8 @@ h4{
 }
 .col-4:hover{
     transform: translateY(-10px);
+}
+
+.logo{
+    float:left;
 }
