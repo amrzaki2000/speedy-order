@@ -25,7 +25,16 @@
                                     </center>
                             </div>
                         </div>
-                        <hr>
+                        <div class="row">
+                            <div class="col">
+                                <center>
+                                    <span>Points - </span>
+                                    <label class="badge badge-pill badge-warning">0</label>
+                                    </center>
+                            </div>
+                        </div>
+
+                        <hr/>
 
 
                         <div class="row">
@@ -104,10 +113,16 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <asp:TextBox ID="TextBox3" TextMode="MultiLine" runat="server" placeholder="Write your Appeal" Rows="2"></asp:TextBox>
                                     
+                                </div>
+                            </div>
+                               <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>View my appeal Status</label>
+                                    <asp:TextBox ID="TextBox23" runat="server" placeholder="None" Disabled="true"></asp:TextBox>
                                 </div>
                             </div>
                         </div>
