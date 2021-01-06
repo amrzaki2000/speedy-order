@@ -94,7 +94,32 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="'form-group">
+                                <center>
+                                      <label class="badge badge-pill badge-warning">Appeal to an Admin</label>
+                              </center>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <asp:TextBox ID="TextBox3" TextMode="MultiLine" runat="server" placeholder="Write your Appeal" Rows="2"></asp:TextBox>
+                                    
+                                </div>
+                            </div>
+                        </div>
 
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <asp:Button ID="Button2" runat="server" Text="Appeal" class="btn btn-warning btn-block" />
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
