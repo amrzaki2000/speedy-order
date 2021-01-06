@@ -53,29 +53,31 @@
                     <ul class="navbar-nav">
                         
                         <li class="nav-item active">
-                            <a class="nav-link " href="homepage.aspx">Home</a>
+                            <a class="nav-link" href="WebForm1.aspx">Home</a>
                         </li>
                         
                         <li class="nav-item">
-                            <asp:LinkButton class="nav-link" ID="LinkButton4" runat="server">View Products</asp:LinkButton>
+                            <asp:LinkButton class="nav-link" ID="LinkButton4" runat="server" OnClick="LinkButton4_Click">View Products</asp:LinkButton>
                         </li>
                         
                         <li class="nav-item">
-                            <asp:LinkButton class="nav-link" ID="LinkButton1" runat="server">User Login</asp:LinkButton>
+                            <asp:LinkButton class="nav-link" ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">User Login</asp:LinkButton>
                         </li>
                         <li class="nav-item">
-                            <asp:LinkButton class="nav-link" ID="LinkButton2" runat="server">Sign Up</asp:LinkButton>
+                            <asp:LinkButton class="nav-link" ID="LinkButton2" runat="server" OnClick="LinkButton2_Click">Sign Up</asp:LinkButton>
                         </li>
                         <li class="nav-item">
-                            <asp:LinkButton class="nav-link" ID="LinkButton3" runat="server">Logout</asp:LinkButton>
+                            <asp:LinkButton class="nav-link" ID="LinkButton3" runat="server" OnClick="LinkButton3_Click" Visible="False">Logout</asp:LinkButton>
                         </li>
  
                         <li class="nav-item">
-                            <asp:LinkButton class="nav-link" ID="LinkButton7" runat="server">Hello user</asp:LinkButton>
+                            <asp:LinkButton class="nav-link" ID="LinkButton7" runat="server" Visible="False">Hello user</asp:LinkButton>
  
                         </li>
                     </ul>
-                                <img src="imgs/cart.png" width="30px" height="30px" />
+                                   <a id="imgCart" href="cart.aspx"><asp:image id="imgCart" runat="server" imageurl="imgs/cart.png" style="width:30px; height:30px;" /></a>
+
+                    <!--<img src="imgs/cart.png" width="30px" height="30px" />=-->
 
                 </div>
 
@@ -174,28 +176,27 @@
 
         <!--Footer--------->
         <footer>
-            <div id="footer1" class="container-fluid">
+            <div id="footer1" class="container-fluidFooter">
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                         <p>
-                            <asp:LinkButton class="footerlinks" ID="LinkButton6" runat="server">Admin Login</asp:LinkButton>
+                            <asp:LinkButton class="footerlinks" ID="LinkButton6" runat="server" OnClick="LinkButton6_Click">Admin Login</asp:LinkButton>
                             &nbsp;
-                            <asp:LinkButton class="footerlinks" ID="LinkButton11" runat="server">Author Management</asp:LinkButton>
+                            <asp:LinkButton class="footerlinks" ID="LinkButton11" runat="server" OnClick="LinkButton11_Click" Visible="False">Admin Management</asp:LinkButton>
                             &nbsp;
-                            <asp:LinkButton class="footerlinks" ID="LinkButton12" runat="server">Publisher Management</asp:LinkButton>
+                            
+                            <asp:LinkButton class="footerlinks" ID="LinkButton8" runat="server" OnClick="LinkButton8_Click" Visible="False">Product Inventory</asp:LinkButton>
                             &nbsp;
-                            <asp:LinkButton class="footerlinks" ID="LinkButton8" runat="server">Product Inventory</asp:LinkButton>
+                            <asp:LinkButton class="footerlinks" ID="LinkButton9" runat="server" OnClick="LinkButton9_Click" Visible="False">Order Issuing</asp:LinkButton>
                             &nbsp;
-                            <asp:LinkButton class="footerlinks" ID="LinkButton9" runat="server">Order Issuing</asp:LinkButton>
-                            &nbsp;
-                             <asp:LinkButton class="footerlinks" ID="LinkButton10" runat="server">Member Management</asp:LinkButton>
+                             
                         </p>
  
                     </div>
  
                 </div>
             </div>
-            <div id="footer2" class="container-fluid">
+            <div id="footer2" class="container-fluidFooter">
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                         <p style="color:whitesmoke">&copy All right Reversed. <a class="footerlinks" href="#" target="_blank">Speedy Order</a></p>

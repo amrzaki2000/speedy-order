@@ -74,6 +74,7 @@
     <Content Include="bootstrap\js\bootstrap.min.js" />
     <Content Include="bootstrap\js\jquery-3.3.1.slim.min.js" />
     <Content Include="bootstrap\js\popper.min.js" />
+    <Content Include="cart.aspx" />
     <Content Include="css\Customstylesheet.css" />
     <Content Include="Customerservice.aspx" />
     <Content Include="datatables\css\jquery.dataTables.min.css" />
@@ -1738,9 +1739,11 @@
     <Content Include="imgs\product-3.jpg" />
     <Content Include="imgs\product-4.jpg" />
     <Content Include="memberSignup.aspx" />
+    <Content Include="productsinventory.aspx" />
     <Content Include="SellerProfile.aspx" />
     <Content Include="userlogin.aspx" />
     <Content Include="userprofile.aspx" />
+    <Content Include="viewproducts.aspx" />
     <Content Include="Web.config" />
     <Content Include="WebForm1.aspx" />
   </ItemGroup>
@@ -1759,6 +1762,13 @@
     <Compile Include="adminmanagement.aspx.designer.cs">
       <DependentUpon>adminmanagement.aspx</DependentUpon>
     </Compile>
+    <Compile Include="cart.aspx.cs">
+      <DependentUpon>cart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="cart.aspx.designer.cs">
+      <DependentUpon>cart.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Customerservice.aspx.cs">
       <DependentUpon>Customerservice.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1772,6 +1782,13 @@
     </Compile>
     <Compile Include="memberSignup.aspx.designer.cs">
       <DependentUpon>memberSignup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="productsinventory.aspx.cs">
+      <DependentUpon>productsinventory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="productsinventory.aspx.designer.cs">
+      <DependentUpon>productsinventory.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SellerProfile.aspx.cs">
@@ -1808,6 +1825,13 @@
     </Compile>
     <Compile Include="userprofile.aspx.designer.cs">
       <DependentUpon>userprofile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="viewproducts.aspx.cs">
+      <DependentUpon>viewproducts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="viewproducts.aspx.designer.cs">
+      <DependentUpon>viewproducts.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
