@@ -68,10 +68,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="adminlogin.aspx" />
+    <Content Include="adminmanagement.aspx" />
     <Content Include="bootstrap\css\bootstrap.min.css" />
     <Content Include="bootstrap\js\bootstrap.min.js" />
     <Content Include="bootstrap\js\jquery-3.3.1.slim.min.js" />
     <Content Include="bootstrap\js\popper.min.js" />
+    <Content Include="cart.aspx" />
     <Content Include="css\Customstylesheet.css" />
     <Content Include="datatables\css\jquery.dataTables.min.css" />
     <Content Include="datatables\js\jquery.dataTables.min.js" />
@@ -1743,7 +1745,9 @@
     <Content Include="imgs\product-9.jpg" />
     <Content Include="imgs\product-a.jpg" />
     <Content Include="imgs\product-a2.png" />
+    <Content Include="imgs\products.png" />
     <Content Include="memberSignup.aspx" />
+    <Content Include="productsinventory.aspx" />
     <Content Include="userlogin.aspx" />
     <Content Include="userprofile.aspx" />
     <Content Include="viewproducts.aspx" />
@@ -1758,12 +1762,33 @@
     <Compile Include="adminlogin.aspx.designer.cs">
       <DependentUpon>adminlogin.aspx</DependentUpon>
     </Compile>
+    <Compile Include="adminmanagement.aspx.cs">
+      <DependentUpon>adminmanagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="adminmanagement.aspx.designer.cs">
+      <DependentUpon>adminmanagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="cart.aspx.cs">
+      <DependentUpon>cart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="cart.aspx.designer.cs">
+      <DependentUpon>cart.aspx</DependentUpon>
+    </Compile>
     <Compile Include="memberSignup.aspx.cs">
       <DependentUpon>memberSignup.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="memberSignup.aspx.designer.cs">
       <DependentUpon>memberSignup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="productsinventory.aspx.cs">
+      <DependentUpon>productsinventory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="productsinventory.aspx.designer.cs">
+      <DependentUpon>productsinventory.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site1.Master.cs">

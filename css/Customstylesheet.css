@@ -27,7 +27,7 @@ body {
 }
 .row {
     display: flex;
-    align-items: center;
+    
     flex-wrap: wrap;
     justify-content: space-around;
     
@@ -149,4 +149,58 @@ select:focus{
 .page-btn span:hover{
     background: #ff523b;
     color:#fff;
+}
+.container-fluid {
+    background: radial-gradient(#fff,#c0d6e4);
+    border-radius: 15px;
+    margin: 10px 0px 0px 0px;
+    
+}
+
+/*Cart items details*/
+.cart-page{
+    margin: 80px auto;
+}
+table{
+    width: 100%;
+    border-collapse: collapse;
+
+}
+.cart-info{
+    display: flex;
+    flex-wrap:wrap
+}
+th {
+    text-align: left;
+    padding: 5px;
+    color: #fff;
+    background: #332255;
+    font-weight: normal;
+}
+td{
+    padding: 10px 5px;
+}
+td input{
+    width: 40px;
+    height: 30px;
+    padding: 5px;
+}
+td a{
+    color: #ff523b;
+    font-size: 12px;
+}
+.total-price{
+    display: flex;
+    justify-content: flex-end;
+}
+.total-price table {
+        border-top: 5px solid #332255 ;
+        width: 100%;
+        max-width: 400px;
+}
+td:last-child{
+    text-align: right;
+}
+th:last-child {
+    text-align: right;
 }

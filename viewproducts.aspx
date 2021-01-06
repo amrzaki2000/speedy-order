@@ -28,6 +28,7 @@
 
                      </div>
                     <p>$50.00</p>
+                    <asp:Button ID="Button1" runat="server" Text="Buy Now &#8594;" class="btn btn-success btn-block" style="background-color:#e73538; border-color: #fff;"/>
                 </div>
                 <div class="col-4">   
                     <img src="imgs/product-2.jpg"/>  
@@ -41,6 +42,7 @@
 
                      </div>
                     <p>$50.00</p>
+                      <asp:Button ID="Button2" runat="server" Text="Buy Now &#8594;" class="btn btn-success btn-block" style="background-color:#e73538; border-color: #fff;"/>
                 </div>
                 <div class="col-4">   
                     <img src="imgs/product-3.jpg"/>  
@@ -54,6 +56,7 @@
 
                      </div>
                     <p>$50.00</p>
+                      <asp:Button ID="Button3" runat="server" Text="Buy Now &#8594;" class="btn btn-success btn-block" style="background-color:#e73538; border-color: #fff;"/>
                 </div>
                 <div class="col-4">   
                     <img src="imgs/product-4.jpg"/>  
@@ -67,13 +70,14 @@
 
                      </div>
                     <p>$50.00</p>
+                      <asp:Button ID="Button4" runat="server" Text="Buy Now &#8594;" class="btn btn-success btn-block" style="background-color:#e73538; border-color: #fff;"/>
                 </div>
                 
 
             </div>
               <div class="row2">
                 <div class="col-4">   
-                    <img src="imgs/product-a2.png"/>  
+                    <img src="imgs/product-11.jpg"/>  
                     <h4>Nike Air Force</h4>
                      <div class="rating">
                          <i class="fa fa-star" ></i>
@@ -84,6 +88,7 @@
 
                      </div>
                     <p>$50.00</p>
+                      <asp:Button ID="Button5" runat="server" Text="Buy Now &#8594;" class="btn btn-success btn-block" style="background-color:#e73538; border-color: #fff;"/>
                 </div>
                 <div class="col-4">   
                     <img src="imgs/product-11.jpg"/>  
@@ -97,6 +102,7 @@
 
                      </div>
                     <p>$50.00</p>
+                      <asp:Button ID="Button6" runat="server" Text="Buy Now &#8594;" class="btn btn-success btn-block" style="background-color:#e73538; border-color: #fff;"/>
                 </div>
                 <div class="col-4">   
                     <img src="imgs/product-6.jpg"/>  
@@ -110,6 +116,7 @@
 
                      </div>
                     <p>$50.00</p>
+                      <asp:Button ID="Button7" runat="server" Text="Buy Now &#8594;" class="btn btn-success btn-block" style="background-color:#e73538; border-color: #fff;"/>
                 </div>
                 <div class="col-4">   
                     <img src="imgs/product-7.jpg"/>  
@@ -123,6 +130,7 @@
 
                      </div>
                     <p>$50.00</p>
+                      <asp:Button ID="Button8" runat="server" Text="Buy Now &#8594;" class="btn btn-success btn-block" style="background-color:#e73538; border-color: #fff;"/>
                 </div>
                 <div class="row2">
                 <div class="col-4">   
@@ -137,6 +145,7 @@
 
                      </div>
                     <p>$50.00</p>
+                      <asp:Button ID="Button9" runat="server" Text="Buy Now &#8594;" class="btn btn-success btn-block" style="background-color:#e73538; border-color: #fff;"/>
                 </div>
                 <div class="col-4">   
                     <img src="imgs/product-9.jpg"/>  
@@ -150,6 +159,7 @@
 
                      </div>
                     <p>$50.00</p>
+                      <asp:Button ID="Button10" runat="server" Text="Buy Now &#8594;" class="btn btn-success btn-block" style="background-color:#e73538; border-color: #fff;"/>
                 </div>
                 <div class="col-4">   
                     <img src="imgs/product-10.jpg"/>  
@@ -163,6 +173,7 @@
 
                      </div>
                     <p>$50.00</p>
+                      <asp:Button ID="Button11" runat="server" Text="Buy Now &#8594;" class="btn btn-success btn-block" style="background-color:#e73538; border-color: #fff;"/>
                 </div>
                 <div class="col-4">   
                     <img src="imgs/product-12.jpg"/>  
@@ -176,6 +187,7 @@
 
                      </div>
                     <p>$50.00</p>
+                      <asp:Button ID="Button12" runat="server" Text="Buy Now &#8594;" class="btn btn-success btn-block" style="background-color:#e73538; border-color: #fff;"/>
                 </div>
                 
 

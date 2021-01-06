@@ -31,7 +31,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div class="header"  >
+        <div class="header"  style="background: radial-gradient(#fff,#ffd6d6); border-radius: 15px; ">
         <div class="row">
             <div class="col logo">
                  <a class="navbar-brand" href="#">
@@ -86,7 +86,7 @@
             </asp:ContentPlaceHolder>
         </div>
         <footer>
-            <div id="footer1" class="container-fluid">
+            <div id="footer1" class="container-fluidFooter">
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                         <p>
@@ -107,7 +107,7 @@
  
                 </div>
             </div>
-            <div id="footer2" class="container-fluid">
+            <div id="footer2" class="container-fluidFooter">
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                         <p style="color:whitesmoke">&copy All right Reversed. <a class="footerlinks" href="#" target="_blank">Speedy Order</a></p>
