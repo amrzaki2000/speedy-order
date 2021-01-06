@@ -74,6 +74,7 @@
     <Content Include="bootstrap\js\jquery-3.3.1.slim.min.js" />
     <Content Include="bootstrap\js\popper.min.js" />
     <Content Include="css\Customstylesheet.css" />
+    <Content Include="Customerservice.aspx" />
     <Content Include="datatables\css\jquery.dataTables.min.css" />
     <Content Include="datatables\js\jquery.dataTables.min.js" />
     <Content Include="fontawesome\attribution.js" />
@@ -1755,6 +1756,13 @@
     </Compile>
     <Compile Include="adminmanagement.aspx.designer.cs">
       <DependentUpon>adminmanagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Customerservice.aspx.cs">
+      <DependentUpon>Customerservice.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Customerservice.aspx.designer.cs">
+      <DependentUpon>Customerservice.aspx</DependentUpon>
     </Compile>
     <Compile Include="memberSignup.aspx.cs">
       <DependentUpon>memberSignup.aspx</DependentUpon>
