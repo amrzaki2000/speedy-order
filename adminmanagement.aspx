@@ -4,10 +4,321 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container-fluid">
+        <!--------------------------------------- Profile Informaion --------------------------------------------------->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card" style="margin: 10px 0 10px 0; border-radius: 5%;">
+                    <div class="card-body">
+                        <div class="row">
+                            <center>
+                            <div class="col">
+                                    <img src="imgs/admin.png" />
+                            </div>
+                                </center>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <center>
+                                    <h6>Greetings to our beloved Admin</h6>
+                                    </center>
+                                </div>
+                                
+                            </div>
+                        </div>
+
+                        <hr/>
+
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <asp:TextBox CssClass="form-control" ID="TextBox12" runat="server" placeholder="First Name"></asp:TextBox>
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <asp:TextBox CssClass="form-control" ID="TextBox13" runat="server" placeholder="Last Name"></asp:TextBox>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <asp:TextBox CssClass="form-control" ID="TextBox14" runat="server" placeholder="Phone Number"></asp:TextBox>
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <asp:TextBox CssClass="form-control" ID="TextBox15" runat="server" placeholder="Address" TextMode="MultiLine" Rows="1"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="col-md">
+                                <div class="form-group">
+                                    <asp:TextBox CssClass="form-control" ID="TextBox16" runat="server" placeholder="Date of Birth" TextMode="Date"></asp:TextBox>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <center>
+                                      <label class="badge badge-pill badge-info">Login Credentials</label>
+                              </center>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <asp:TextBox CssClass="form-control" ID="TextBox17" runat="server" placeholder="Username" TextMode="Password"></asp:TextBox>
+                                </div>
+
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <asp:TextBox CssClass="form-control" ID="TextBox18" runat="server" placeholder="Old Password" TextMode="Password"></asp:TextBox>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <asp:TextBox CssClass="form-control" ID="TextBox19" runat="server" placeholder="New Password" TextMode="Password"></asp:TextBox>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <asp:Button ID="Button15" runat="server" Text="Update" class="btn btn-success btn-block" />
+                                </div>
+                            </div>
+                        </div>
+                        
+                       
+                    </div>
+                </div>
+            </div>
+             <div class="col-md-6">
+                <div class="card" style="margin: 10px 0 10px 0; border-radius: 5%;">
+                    <div class="card-body">
+                        
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <center>
+                                    <h6>Admins and Customer Service Management</h6>
+                                    </center>
+                                </div>
+                                
+                            </div>
+                        </div>
+
+                        <hr/>
+
+
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label class="badge badge-pill badge-danger">Admin management</label>
+                                </div>
+                            </div>
+                        </div>
+
+                          <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <asp:TextBox CssClass="form-control" ID="adminfirst" runat="server" placeholder="First Name"></asp:TextBox>
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <asp:TextBox CssClass="form-control" ID="adminlast" runat="server" placeholder="Last Name"></asp:TextBox>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <asp:TextBox CssClass="form-control" ID="adminphone" runat="server" placeholder="Phone Number"></asp:TextBox>
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <asp:TextBox CssClass="form-control" ID="adminaddress" runat="server" placeholder="Address" TextMode="MultiLine" Rows="1"></asp:TextBox>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <asp:TextBox CssClass="form-control" ID="adminemail" runat="server" placeholder="Email" TextMode="Email"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <asp:TextBox CssClass="form-control" ID="adminsalary" runat="server" placeholder="Salary" TextMode="Number"></asp:TextBox>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col">
+                                <center>
+                                      <label class="badge badge-pill badge-info">Login Credentials</label>
+                              </center>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <asp:TextBox CssClass="form-control" ID="adminusername" runat="server" placeholder="Username"></asp:TextBox>
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <asp:TextBox CssClass="form-control" ID="adminpass" runat="server" placeholder="Password" TextMode="Password"></asp:TextBox>
+                                </div>
+                            </div>
+
+                            
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <asp:Button ID="Insertadmin" runat="server" Text="Insert Admin" class="btn btn-danger btn-block" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <hr />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                   <label class="badge badge-pill badge-primary">Customer Service Management</label>
+                                </div>
+                                
+                            </div>
+                        </div>
+                         <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <asp:TextBox CssClass="form-control" ID="cservicefirst" runat="server" placeholder="First Name"></asp:TextBox>
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <asp:TextBox CssClass="form-control" ID="cservicelast" runat="server" placeholder="Last Name"></asp:TextBox>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <asp:TextBox CssClass="form-control" ID="cservicephone" runat="server" placeholder="Phone Number"></asp:TextBox>
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <asp:TextBox CssClass="form-control" ID="cserviceaddress" runat="server" placeholder="Address" TextMode="MultiLine" Rows="1"></asp:TextBox>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <asp:TextBox CssClass="form-control" ID="cserviceemail" runat="server" placeholder="Email" TextMode="Email"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <asp:TextBox CssClass="form-control" ID="cservicesalary" runat="server" placeholder="Salary" TextMode="Number"></asp:TextBox>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <asp:TextBox CssClass="form-control" ID="cservice_supervisor" runat="server"  placeholder="Supervisor Username"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <asp:TextBox CssClass="form-control" ID="cservicehours" runat="server" placeholder="Working Hours" TextMode="Number"></asp:TextBox>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col">
+                                <center>
+                                      <label class="badge badge-pill badge-info">Login Credentials</label>
+                              </center>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <asp:TextBox CssClass="form-control" ID="cservice_username" runat="server" placeholder="Username"></asp:TextBox>
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <asp:TextBox CssClass="form-control" ID="cservice_pass" runat="server" placeholder="Password" TextMode="Password"></asp:TextBox>
+                                </div>
+                            </div>
+
+                            
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <asp:Button ID="add_cs" runat="server" Text="Insert Customer Service Employee" class="btn btn-primary btn-block" />
+                                </div>
+                            </div>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+        <!-------------------------------------- End Profile Information ------------------------------------------------>
+
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <hr />
+                </div>
+            </div>
+        </div>
+
+
         <!-------------------------------------------- Customers Management Section ------------------------------------------>
 
         <div class="row">
-            <div class="col-md-5">
+            <div class="col-md-6">
                 <div class="card" style="margin: 10px 0 10px 0; border-radius: 5%;">
                     <div class="card-body">
                         <div class="row">
@@ -347,7 +658,7 @@
                         </div>
                         <hr>
                <!-------------------------------------------------------------------------------------------->
-              <!--------------------------- Sellers Info ------------------------------------------------->
+              <!--------------------------- Orders Info ------------------------------------------------->
 
                         <div class="row">
                             <div class="col-md-6">
@@ -360,7 +671,6 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                       <asp:Button ID="Button20" runat="server" Text="Get Order" class="btn btn-primary btn-block" />
-
                                      <asp:Button ID="Button16" runat="server" Text="View All" class="btn btn-primary btn-block" />
                                 </div>
                             </div>

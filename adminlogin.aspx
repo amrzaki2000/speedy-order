@@ -4,6 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container-fluidH">
         <div class="row">
+
             <div class="col-lg-10">
                 <div class="card" style="margin-bottom: 10px; border-radius:5%;">
                     <div class="card-body">
