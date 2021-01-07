@@ -1769,6 +1769,7 @@
     <Compile Include="cart.aspx.designer.cs">
       <DependentUpon>cart.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Controller.cs" />
     <Compile Include="Customerservice.aspx.cs">
       <DependentUpon>Customerservice.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1776,6 +1777,7 @@
     <Compile Include="Customerservice.aspx.designer.cs">
       <DependentUpon>Customerservice.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DBManager.cs" />
     <Compile Include="memberSignup.aspx.cs">
       <DependentUpon>memberSignup.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

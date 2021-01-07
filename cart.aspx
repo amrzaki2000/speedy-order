@@ -71,6 +71,9 @@
                     <td>Total</td>
                     <td>$198.00</td>
                 </tr>
+                <tr >
+                    <asp:Button ID="Button2" runat="server" Text="Check Out &#8594;" class="btn btn-success btn-block" style="background-color:#e73538; border-color: #fff;"/>
+                </tr>
             </table>
         </div>
     </div>

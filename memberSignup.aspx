@@ -96,7 +96,7 @@
                           <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <asp:Button ID="Button1" runat="server" Text="Sign up" class="btn btn-primary btn-block"/>
+                                    <asp:Button ID="Button1" runat="server" Text="Sign up" class="btn btn-primary btn-block" OnClick="Button1_Click"/>
                                 </div>                            
                             </div>
                         </div>
