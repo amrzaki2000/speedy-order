@@ -134,6 +134,9 @@ namespace DatabaseProject
                 return null;
             }
         }
+
+        //public DataTable GetProductsofaSeller()
+
         //************************* Insertion functions *********************************************//
         
         // Function for inserting a Customer

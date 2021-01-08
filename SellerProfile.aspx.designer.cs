@@ -195,6 +195,15 @@ namespace DatabaseProject
         protected global::System.Web.UI.WebControls.Button Button3;
 
         /// <summary>
+        /// FileUpload1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
+
+        /// <summary>
         /// TextBox6 control.
         /// </summary>
         /// <remarks>
@@ -222,6 +231,15 @@ namespace DatabaseProject
         protected global::System.Web.UI.WebControls.TextBox TextBox12;
 
         /// <summary>
+        /// DropDownList1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+
+        /// <summary>
         /// TextBox13 control.
         /// </summary>
         /// <remarks>
@@ -231,13 +249,13 @@ namespace DatabaseProject
         protected global::System.Web.UI.WebControls.TextBox TextBox13;
 
         /// <summary>
-        /// TextBox14 control.
+        /// DropDownList2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox14;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList2;
 
         /// <summary>
         /// TextBox15 control.

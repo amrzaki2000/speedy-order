@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
+using System.IO;
 
 namespace DatabaseProject
 {
@@ -27,6 +28,7 @@ namespace DatabaseProject
                 if (!Page.IsPostBack)
                 {
                     DataTable dt = controlObj.GetSellerInfo(Session["username"].ToString());  // Set the information of the seller profile to their current Status
+                    
                     TextBox1.Text = dt.Rows[0][0].ToString();
                     TextBox4.Text = dt.Rows[0][1].ToString();
                     TextBox9.Text = dt.Rows[0][3].ToString();
@@ -56,7 +58,8 @@ namespace DatabaseProject
 
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+        //Function to update the information of a seller
+        public void Update()
         {
             string username = TextBox2.Text;
             string pass = TextBox5.Text;
@@ -67,22 +70,46 @@ namespace DatabaseProject
             string phone = TextBox7.Text;
             string address = TextBox8.Text;
 
-            if(val.Checkblank(username,pass,newpass,fname,lname,bdate,phone,address))
+            if (val.Checkblank(username, pass, newpass, fname, lname, bdate, phone, address))
                 Response.Write("<script>alert('Please do not leave any blank fields')</script>");
-            else if(Session["username"].ToString()!=username || Session["Password"].ToString() != pass)
+            else if (Session["username"].ToString() != username || Session["Password"].ToString() != pass)
                 Response.Write("<script>alert('Wrong Credentials. Please enter the correct ones')</script>");
             else
             {
-                
-                 int result1 = controlObj.UpdateSeller(username, fname, lname, bdate, phone, address);
+
+                int result1 = controlObj.UpdateSeller(username, fname, lname, bdate, phone, address);
                 int result2 = controlObj.UpdatePassword(username, newpass);
 
-                if(result1 == 0 && result2 ==0)
+                if (result1 == 0 && result2 == 0)
                     Response.Write("<script>alert('Information Could not be Updated')</script>");
                 else
                     Response.Write("<script>alert('Information Updated Successfully')</script>");
 
             }
+        }
+
+        //Fuction that adds a new product to the inventory
+        public void addProduct()
+        {
+            string filename = Path.GetFileName(FileUpload1.PostedFile.FileName);
+            string filepath = "~/imgs/Products" + filename;
+            FileUpload1.SaveAs(Server.MapPath(filepath));
+            string name = TextBox6.Text;
+            int price = int.Parse(TextBox11.Text);
+            string color = TextBox12.Text;
+            string Size = DropDownList1.SelectedValue;
+            int quantity = int.Parse(TextBox13.Text);
+            
+        }
+
+        protected void Button1_Click(object sender, EventArgs e) //Updates user Information onclick
+        {
+            Update();
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

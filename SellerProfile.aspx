@@ -1,6 +1,24 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site2.Master" AutoEventWireup="true" CodeBehind="SellerProfile.aspx.cs" Inherits="DatabaseProject.SellerProfile" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+  <script type="text/javascript">
+      $(document).ready(function () {
+          $(".table").prepend($("<thead></thead>").append($(this).find("tr:first"))).dataTable();
+      });
+
+      function readURL(input) {
+          if (input.files && input.files[0]) {
+              var reader = new FileReader();
+
+              reader.onload = function (e) {
+                  $('#imgview').attr('src', e.target.result);
+              };
+
+              reader.readAsDataURL(input.files[0]);
+          }
+      }
+
+  </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container-fluid">
@@ -248,7 +266,7 @@
                                 </div>
                             </div>
                         </div>
-
+                        
 
                         <div class="row">
                             <div class="col">
@@ -268,7 +286,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <asp:Button ID="Button3" runat="server" Text="View my Products" class="btn btn-primary btn-block" />
+                                    <asp:Button ID="Button3" runat="server" Text="View my Products" class="btn btn-primary btn-block" OnClick="Button3_Click" />
                                 </div>
                             </div>
                         </div>
@@ -287,6 +305,20 @@
                             </div>
                         </div>
                         <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <img id="imgview" height="150px" width="150px" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <asp:FileUpload ID="FileUpload1" CssClass="form-control" onchange="readURL(this)" runat="server" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <asp:TextBox ID="TextBox6" runat="server" placeholder="Name"></asp:TextBox>
@@ -299,24 +331,44 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Product Color</label>
                                     <asp:TextBox ID="TextBox12" runat="server" placeholder="Color" TextMode="Color"></asp:TextBox>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
-                                    <asp:TextBox ID="TextBox13" runat="server" placeholder="Size" TextMode="SingleLine"></asp:TextBox>
+                                    <label>Size</label>
+                                    <asp:DropDownList ID="DropDownList1" runat="server">
+                                        <asp:ListItem>XS</asp:ListItem>
+                                        <asp:ListItem>S</asp:ListItem>
+                                        <asp:ListItem>M</asp:ListItem>
+                                        <asp:ListItem>L</asp:ListItem>
+                                        <asp:ListItem>XL</asp:ListItem>
+                                    </asp:DropDownList>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Quantity</label>
+                                    <asp:TextBox ID="TextBox13" runat="server" TextMode="Number"></asp:TextBox>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <asp:TextBox ID="TextBox14" runat="server" placeholder="Category" TextMode="SingleLine"></asp:TextBox>
+                                    <label>Category</label>
+                                    <asp:DropDownList ID="DropDownList2" runat="server">
+                                        <asp:ListItem>T-shirts</asp:ListItem>
+                                        <asp:ListItem>Shoes</asp:ListItem>
+                                        <asp:ListItem>Trousers</asp:ListItem>
+                                        <asp:ListItem>Socks</asp:ListItem>
+                                    </asp:DropDownList>
                                 </div>
                             </div>
+
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <asp:TextBox ID="TextBox15" runat="server" placeholder="Description" TextMode="Multiline" Rows="5" Columns="30"></asp:TextBox>
