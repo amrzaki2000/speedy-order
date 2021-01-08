@@ -157,7 +157,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <asp:Button ID="Button2" runat="server" Text="Appeal" class="btn btn-warning " />
+                                    <asp:Button ID="Button2" runat="server" Text="Appeal" class="btn btn-warning " OnClick="Button2_Click" />
 
                                 </div>
                             </div>
@@ -230,6 +230,7 @@
                             <div class="col">
                                 <div class="form-group">
                                     <h6>Product Management
+                                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=DESKTOP-O1R2Q0Q\SQLEXPRESS01;Initial Catalog=SpeedyOrder2;Integrated Security=True" ProviderName="System.Data.SqlClient" SelectCommand="SELECT * FROM [Products]"></asp:SqlDataSource>
                                     </h6>
                                 </div>
                             </div>
@@ -253,7 +254,23 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <asp:GridView CssClass="table table-stripped table-bordered table-hover" ID="GridView1" runat="server"></asp:GridView>
+                                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ProductID" DataSourceID="SqlDataSource1">
+                                        <Columns>
+                                            <asp:BoundField DataField="ProductID" HeaderText="ProductID" InsertVisible="False" ReadOnly="True" SortExpression="ProductID" />
+                                            <asp:BoundField DataField="ProductName" HeaderText="ProductName" SortExpression="ProductName" />
+                                            <asp:BoundField DataField="Description " HeaderText="Description " SortExpression="Description " />
+                                            <asp:BoundField DataField="Color " HeaderText="Color " SortExpression="Color " />
+                                            <asp:BoundField DataField="Category " HeaderText="Category " SortExpression="Category " />
+                                            <asp:BoundField DataField="Size" HeaderText="Size" SortExpression="Size" />
+                                            <asp:BoundField DataField="Price" HeaderText="Price" SortExpression="Price" />
+                                            <asp:BoundField DataField="Rating " HeaderText="Rating " SortExpression="Rating " />
+                                            <asp:BoundField DataField="quantity" HeaderText="quantity" SortExpression="quantity" />
+                                            <asp:BoundField DataField="Quality_Control_Admin" HeaderText="Quality_Control_Admin" SortExpression="Quality_Control_Admin" />
+                                            <asp:BoundField DataField="QualityStatus" HeaderText="QualityStatus" SortExpression="QualityStatus" />
+                                            <asp:BoundField DataField="Seller" HeaderText="Seller" SortExpression="Seller" />
+                                            <asp:BoundField DataField="prodImg" HeaderText="prodImg" SortExpression="prodImg" />
+                                        </Columns>
+                                    </asp:GridView>
                                 </div>
                             </div>
                         </div>
@@ -268,7 +285,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <asp:Button ID="Button3" runat="server" Text="View my Products" class="btn btn-primary btn-block" />
+                                    <asp:Button ID="Button3" runat="server" Text="View my Products" class="btn btn-primary btn-block" OnClick="Button3_Click" />
                                 </div>
                             </div>
                         </div>
@@ -399,7 +416,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <asp:Button ID="Button5" runat="server" Text="Update my Product" class="btn btn-info btn-block" />
+                                    <asp:Button ID="Button5" runat="server" Text="Update my Product" class="btn btn-info btn-block" OnClick="Button5_Click" />
                                 </div>
                             </div>
                         </div>
@@ -444,7 +461,8 @@
                 </div>
             </div>
         </div>
-
+        
 
     </div>
+    
 </asp:Content>

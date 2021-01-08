@@ -6,6 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.IO;
 using System.Data;
+using System.Data.SqlClient;
+using System.Configuration;
 
 
 namespace DatabaseProject

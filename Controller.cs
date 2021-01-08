@@ -241,6 +241,33 @@ namespace DatabaseProject
         {
             dbMan.CloseConnection();
         }
+        //                 _--------------------------Hannah 8Jan
+        public DataTable GetSellerID(string username)         //Function returning a table carrying the information of a Seller
+        {
+            try
+            {
+                string query = "select SellerID from Subscriber where Username='"+ username +"';";
+                return dbMan.ExecuteReader(query);
+            }
+            catch (Exception exp)
+            {
+                Console.WriteLine("Couldn't Connect to database");
+                return null;
+            }
+        }
 
+        public DataTable GetAllsellerProd(int sellerID )         //Function returning a table carrying the information of a Seller
+        {
+            try
+            {
+                string query = "select * from Products where Seller= " + sellerID + ";";
+                return dbMan.ExecuteReader(query);
+            }
+            catch (Exception exp)
+            {
+                Console.WriteLine("Couldn't Connect to database");
+                return null;
+            }
+        }
     }
 }

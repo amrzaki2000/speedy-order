@@ -5,6 +5,12 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
+using System.IO;
+using System.Configuration;
+using System.Data.SqlClient;
+using System.Drawing;
+using System.ComponentModel;
+
 
 namespace DatabaseProject
 {
@@ -51,8 +57,8 @@ namespace DatabaseProject
 
                 }
             }
-           
-            
+
+            GridView1.DataBind();
 
         }
 
@@ -83,6 +89,49 @@ namespace DatabaseProject
                     Response.Write("<script>alert('Information Updated Successfully')</script>");
 
             }
+        }
+
+        protected void Button2_Click(object sender, EventArgs e) //appeal
+        {
+
+        }
+
+        protected void Button5_Click(object sender, EventArgs e)  //update product
+        {
+
+        }
+
+        protected void Button3_Click(object sender, EventArgs e) //view my products
+        {
+            try 
+            {
+                string username = Session["username"].ToString();
+                DataTable dt = controlObj.GetSellerID(username);
+                Session["sellerID"] = dt.Rows[0][0].ToString();
+                int sellerID = (int)dt.Rows[0][0];
+                DataTable dtAllprod = controlObj.GetAllsellerProd(sellerID);
+                if (dtAllprod == null)
+                {
+                    Response.Write("<script>alert('No products');</script>");
+                }
+
+
+
+                GridView1.DataSource = dtAllprod;
+                GridView1.DataBind();
+                //ProductGridView.Refresh();
+                return;
+            }
+            catch (Exception exp)
+            {
+                Console.WriteLine("Couldn't Connect to database");
+                return;
+            }
+        }
+
+        protected void GridView2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
