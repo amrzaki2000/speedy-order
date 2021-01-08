@@ -28,7 +28,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <asp:TextBox CssClass="form-control" ID="TextBox2" runat="server" placeholder="Username"></asp:TextBox>
-                                </div>                            
+                                </div>     
 
                             </div>
                             <div class="col-md-6">
@@ -108,7 +108,7 @@
                             </div>
                                <div class="col-md-6">
                                 <div class="form-group">
-                                    <asp:Button ID="Button2" runat="server" Text="Log in" class="btn btn-success btn-block"/>
+                                    <asp:Button ID="Button2" runat="server" Text="Log in" class="btn btn-success btn-block" OnClick="Button2_Click"/>
                                 </div>                            
                             </div>
 

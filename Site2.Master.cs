@@ -51,7 +51,7 @@ namespace DatabaseProject
 
                     LinkButton3.Visible = true; // logout link button
                     LinkButton7.Visible = true; // hello user link button
-                    LinkButton7.Text = "Hello Admin";
+                    LinkButton7.Text = "Hello " + Session["username"].ToString();
 
 
                     LinkButton6.Visible = false; // admin login link button

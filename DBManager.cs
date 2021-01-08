@@ -48,22 +48,30 @@ namespace DatabaseProject
                 return 0;
             }
         }
-        /* public SqlDataReader DataReader(string query)
-         {
-             try
-             {
-                 SqlCommand myCommand = new SqlCommand(query, myConnection);
-                 SqlDataReader reader = myCommand.ExecuteReader();
-                 return reader;
+        public int ExecuteNonQuery(string storedProcedureName, Dictionary<string, object> parameters)
+        {
+            try
+            {
+                SqlCommand myCommand = new SqlCommand(storedProcedureName, myConnection);
 
-             }
-             catch (Exception ex)
-             {
-                 Console.WriteLine(ex.Message);
-                 return null;
-             }
+                myCommand.CommandType = CommandType.StoredProcedure;
 
-         }*/
+                foreach (KeyValuePair<string, object> Param in parameters)
+                {
+                    myCommand.Parameters.Add(new SqlParameter(Param.Key, Param.Value));
+                }
+
+                return myCommand.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return 0;
+            }
+        }
+
+       
 
         public DataTable ExecuteReader(string query)
         {

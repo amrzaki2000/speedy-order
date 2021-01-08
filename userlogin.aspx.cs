@@ -33,7 +33,7 @@ namespace DatabaseProject
                 {
                     Response.Write("<script>alert('Invalid credentials');</script>");
                 }
-                else if (dt.Rows[0][5].ToString().ToLower() == "seller" || dt.Rows[0][5].ToString().ToLower() == "customer")
+                else if (dt.Rows[0][6].ToString().ToLower() == "customer" || dt.Rows[0][6].ToString().ToLower() == "seller"  )
                 {
                     Response.Write("<script>alert('Login Successful, Hello " + username.Text.Trim() + "');</script>");
                     userType=dt.Rows[0][5].ToString();
