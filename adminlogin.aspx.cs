@@ -21,7 +21,7 @@ namespace DatabaseProject
             try
             {
                 string userType = "a";
-                DataTable dt = controllerObj.adminLogin(username.Text.Trim(), TextBox1.Text.Trim());
+                DataTable dt = controllerObj.userLogin(username.Text.Trim(), TextBox1.Text.Trim());
 
                 // Response.Write("<script>alert('Sign Up Successful. Go to User Login to Login');</script>");
                 if (dt == null)
@@ -34,6 +34,7 @@ namespace DatabaseProject
                     Response.Write("<script>alert('Login Successful, Hello "+ username.Text.Trim() + "');</script>");
                     userType = dt.Rows[0][5].ToString();
                     Session["username"] = username.Text.Trim();
+                    Session["Password"] = TextBox1.Text.Trim();
                     Session["userType"] = userType;
                     Session["role"] = "admin";
                     Response.Redirect("WebForm1.aspx");

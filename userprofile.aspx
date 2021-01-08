@@ -19,7 +19,7 @@
                         <div class="row">
                             <div class="col">
                                 <center>
-                                    <h6>Your Profile</h6>
+                                    <h6>Welcome Back</h6>
                                     <span>Account Status - </span>
                                     <label class="badge badge-pill badge-success">Active</label>
                                     </center>
@@ -63,12 +63,18 @@
                                     <asp:TextBox CssClass="form-control" ID="TextBox8" runat="server" placeholder="Address" TextMode="MultiLine" Rows="1"></asp:TextBox>
                                 </div>
                             </div>
-                            <div class="col-md">
+                            </div>
+                        <div class="row">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <asp:TextBox CssClass="form-control" ID="TextBox9" runat="server" placeholder="Date of Birth" TextMode="Date"></asp:TextBox>
                                 </div>
                             </div>
-
+                             <div class="col-md-6">
+                                <div class="form-group">
+                                    <asp:TextBox CssClass="form-control" ID="TextBox10" runat="server" placeholder="New Password" TextMode="Password"></asp:TextBox>
+                                </div>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col">
@@ -78,28 +84,24 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-3">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <asp:TextBox CssClass="form-control" ID="TextBox2" runat="server" placeholder="Username" TextMode="Password"></asp:TextBox>
                                 </div>
 
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="form-group">
-                                    <asp:TextBox CssClass="form-control" ID="TextBox5" runat="server" placeholder="Old Password" TextMode="Password"></asp:TextBox>
+                                    <asp:TextBox CssClass="form-control" ID="TextBox5" runat="server" placeholder="Password" TextMode="Password"></asp:TextBox>
                                 </div>
                             </div>
 
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <asp:TextBox CssClass="form-control" ID="TextBox10" runat="server" placeholder="New Password" TextMode="Password"></asp:TextBox>
-                                </div>
-                            </div>
+                           
                         </div>
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <asp:Button ID="Button1" runat="server" Text="Update" class="btn btn-success btn-block" />
+                                    <asp:Button ID="Button1" runat="server" Text="Update" class="btn btn-success btn-block" OnClick="Button1_Click" />
                                 </div>
                             </div>
                         </div>

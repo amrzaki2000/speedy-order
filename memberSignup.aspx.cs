@@ -33,8 +33,8 @@ namespace DatabaseProject
             string address = TextBox8.Text.Trim();
             string bdate = TextBox9.Text.Trim();
             string type = DropDownList1.SelectedValue.Trim();
-
-            if (username.Length == 0 || email.Length == 0 || first.Length == 0 || last.Length == 0 || pass.Length == 0 || phonenumber.Length == 0 || address.Length == 0 || bdate.Length == 0 || type.Length == 0)
+            
+            if (val.Checkblank(username, email, first, last, pass, phonenumber, address, bdate, type))
             {
                 Response.Write("<script>alert('Please do not leave any blank fields')</script>");
             }
@@ -60,6 +60,13 @@ namespace DatabaseProject
                             result2 = controllerObj.InsertSub(username, pass, null, "Customers", null, null, type);
                             if (result2 == 0)
                                 Response.Write("<script>alert('Sign-Up process was interrupted')</script>");
+                            else
+                            {
+                                Session["username"] = username;
+                                Session["userType"] = type;
+                                Session["role"] = "user";
+                                Response.Redirect("WebForm1.aspx");
+                            }
                         }
                     }
 
@@ -76,6 +83,14 @@ namespace DatabaseProject
                             result2 = controllerObj.InsertSub(username, pass, null, null, null, "Sellers", type);
                             if (result2 == 0)
                                 Response.Write("<script>alert('Sign-Up process was interrupted')</script>");
+                            else
+                            {
+                                
+                                Session["username"] = username;
+                                Session["userType"] = type;
+                                Session["role"] = "user";
+                                Response.Redirect("WebForm1.aspx");
+                            }
                         }
                     }
                 }

@@ -13,7 +13,7 @@ namespace DatabaseProject
         {
             try
             {
-                if (Session["role"].Equals(""))
+                if (Session["role"] !=null)
                 {
                     LinkButton1.Visible = true; // user login link button
                     LinkButton2.Visible = true; // sign up link button
@@ -27,38 +27,38 @@ namespace DatabaseProject
                     LinkButton8.Visible = false; // product inventory link button
                     LinkButton9.Visible = false; // Order issuing link button
 
+                    if (Session["role"].Equals("user"))
+                    {
+                        LinkButton1.Visible = false; // user login link button
+                        LinkButton2.Visible = false; // sign up link button
 
+                        LinkButton3.Visible = true; // logout link button
+                        LinkButton7.Visible = true; // hello user link button
+                        LinkButton7.Text = "Hello " + Session["username"].ToString();
+
+
+                        LinkButton6.Visible = true; // admin login link button
+                        LinkButton11.Visible = false; // admin management link button
+                        LinkButton8.Visible = false; // product inventory link button
+                        LinkButton9.Visible = false; // Order issuing link button
+                    }
+                    else if (Session["role"].Equals("admin"))
+                    {
+                        LinkButton1.Visible = false; // user login link button
+                        LinkButton2.Visible = false; // sign up link button
+
+                        LinkButton3.Visible = true; // logout link button
+                        LinkButton7.Visible = true; // hello user link button
+                        LinkButton7.Text = "Hello " + Session["username"].ToString();
+
+
+                        LinkButton6.Visible = false; // admin login link button
+                        LinkButton11.Visible = true; // admin management link button
+                        LinkButton8.Visible = true; // product inventory link button
+                        LinkButton9.Visible = true; // Order issuing link button
+                    }
                 }
-                else if (Session["role"].Equals("user"))
-                {
-                    LinkButton1.Visible = false; // user login link button
-                    LinkButton2.Visible = false; // sign up link button
-
-                    LinkButton3.Visible = true; // logout link button
-                    LinkButton7.Visible = true; // hello user link button
-                    LinkButton7.Text = "Hello " + Session["username"].ToString();
-
-
-                    LinkButton6.Visible = true; // admin login link button
-                    LinkButton11.Visible = false; // admin management link button
-                    LinkButton8.Visible = false; // product inventory link button
-                    LinkButton9.Visible = false; // Order issuing link button
-                }
-                else if (Session["role"].Equals("admin"))
-                {
-                    LinkButton1.Visible = false; // user login link button
-                    LinkButton2.Visible = false; // sign up link button
-
-                    LinkButton3.Visible = true; // logout link button
-                    LinkButton7.Visible = true; // hello user link button
-                    LinkButton7.Text = "Hello " + Session["username"].ToString();
-
-
-                    LinkButton6.Visible = false; // admin login link button
-                    LinkButton11.Visible = true; // admin management link button
-                    LinkButton8.Visible = true; // product inventory link button
-                    LinkButton9.Visible = true; // Order issuing link button
-                }
+                
             }
             catch (Exception ex)
             {
@@ -123,6 +123,19 @@ namespace DatabaseProject
             LinkButton11.Visible = false; // admin management link button
             LinkButton8.Visible = false; // product inventory link button
             LinkButton9.Visible = false; // Order issuing link button
+            Response.Redirect("userlogin.aspx");
+        }
+
+        protected void LinkButton7_Click(object sender, EventArgs e)
+        {
+            if (Session["userType"].Equals("Customer"))
+                Response.Redirect("userprofile.aspx");
+            else if (Session["userType"].Equals("Seller"))
+                Response.Redirect("sellerprofile.aspx");
+            else if (Session["userType"].Equals("Admin"))
+                Response.Redirect("adminmanagement.aspx");
+            else if (Session["userType"].Equals("Customer Service"))
+                Response.Redirect("Customerservice.aspx");
         }
     }
 }

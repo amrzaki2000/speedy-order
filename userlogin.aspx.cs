@@ -18,6 +18,7 @@ namespace DatabaseProject
 
         }
 
+
         protected void Button1_Click(object sender, EventArgs e)
         {
             //Response.Write("<script>alert('Sign Up Successful. Go to User Login to Login');</script>");
@@ -36,11 +37,13 @@ namespace DatabaseProject
                 else if (dt.Rows[0][6].ToString().ToLower() == "customer" || dt.Rows[0][6].ToString().ToLower() == "seller"  )
                 {
                     Response.Write("<script>alert('Login Successful, Hello " + username.Text.Trim() + "');</script>");
-                    userType=dt.Rows[0][5].ToString();
+                    userType=dt.Rows[0][6].ToString();
                     Session["username"] = username.Text.Trim();
+                    Session["Password"] = TextBox1.Text.Trim();
                     Session["userType"] = userType;
                     Session["role"] = "user";
                     Response.Redirect("WebForm1.aspx");
+                    
                     
                 }
             }
