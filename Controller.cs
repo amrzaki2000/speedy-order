@@ -6,17 +6,35 @@ using System.Data;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data.SqlClient;
+using System.Configuration;
 
 namespace DatabaseProject
 {
+    
     public class Controller
     {
+        int DBid;
         DBManager dbMan;
         public Controller()
         {
             dbMan = new DBManager();
+            DBid = 0;
+            setDBid();
         }
+        public void setDBid()
+        {
+            string query = "SELECT idGeneration FROM Subscriber;";
+            DBid= (int)dbMan.ExecuteScalar(query);
+        }
+        public int  updateDBid_inDB()
+        {
+            DBid++;
+            //use the update query
 
+            string query = " UPDATE Subscriber   SET idGeneration = "+ DBid +"      WHERE idGeneration = "+ (DBid - 1) +";";
+            return dbMan.ExecuteNonQuery(query);
+        }
 
         public void TerminateConnection()
         {
@@ -28,6 +46,19 @@ namespace DatabaseProject
             return dbMan.ExecuteReader(query);
         }
 
+        public DataTable userLogin(string userName,string password)
+        {
+            string query = "select * from Subscriber WHERE Username='"+userName+"' and Password="+ password+" ;";
+            
+             
+            return dbMan.ExecuteReader(query);
+        }
+        public DataTable adminLogin(string userName, string password)
+        {
+            string query = "select * from Subscriber WHERE Username='" + userName + "' and Password=" + password + " ;";
+            
+            return dbMan.ExecuteReader(query);
+        }
 
         public int InsertProject(string Pname, int pnumber, string Plocation, int Dnum)
         {

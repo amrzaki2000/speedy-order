@@ -44,6 +44,7 @@ namespace DatabaseProject
                 {
 
                 }
+                Response.Write("<script>alert('Sign Up Successful. Go to User Login to Login');</script>");
             }
             catch(Exception ex)
             {

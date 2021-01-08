@@ -28,7 +28,7 @@
                         </div>
                         <hr>
                <!-------------------------------------------------------------------------------------------->
-              <!--------------------------- Customers Info ------------------------------------------------->
+              <!--------------------------- Product Info ------------------------------------------------->
                         <div class="row">
                             <div class="col">
                                 <label class="badge badge-pill badge-primary">Products Info</label>
@@ -57,50 +57,12 @@
                             </div>
                         </div>
 
-                        <!-------------------------------------End Customers Info----------------------------------->
+                        <!-------------------------------------End Product Info----------------------------------->
 
-                        <!------------------------------- Ban Customers ------
-
-                        <div class="row">
-                            <div class="col">
-                                <label class="badge badge-pill badge-danger">Ban Products</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Product ID</label>
-                                    <asp:TextBox CssClass="form-control" ID="TextBox3" runat="server" TextMode="Number" placeholder="Product ID"></asp:TextBox>
-                                </div>
-
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <asp:Button ID="Button3" runat="server" Text="Ban Product" class="btn btn-danger btn-block" />
-                                    <asp:Button ID="Button5" runat="server" Text="View Banned" class="btn btn-danger btn-block" />
-                                    <asp:Button ID="Button6" runat="server" Text="Unban Product" class="btn btn-danger btn-block" />
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="row">
-                            <div class="col">
-                                <div class="form-group">
-                                    <label>Reason of banning</label>
-                                    <asp:TextBox CssClass="form-control" ID="TextBox7" runat="server" TextMode="Multiline" placeholder="Describe the reason to the seller"></asp:TextBox>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <div class="form-group">
-                                    <hr />
-                                </div>
-                            </div>
-                        </div>   --------------------------------------->
+                     
                         <!-------------------------------------------------------------------------------------------->
 
-                        <!-------------------------- Promo Codes ------------------------------------------------------>
+                        <!-------------------------- Quality Control ------------------------------------------------------>
                         <div class="row">
                             <div class="col">
                                 <label class="badge badge-pill badge-success">Quality Control</label>
@@ -147,18 +109,16 @@
                         </div>
                        
                         
-        <!---------------------------------------- End Promo Codes ------------------------------->
+       
 
                     </div>
                 </div>
             </div>
 
-            <!-------------- Customer and Promos Datatable Section ----------------------------------->
-            <div class="col-md-6">
+                                      <!-------------- Products Datatable Section ----------------------------------->
+            <div class="col-md-7">
                 <div class="card" style="margin: 10px 0 10px 0; border-radius: 5%;">
                     <div class="card-body">
-                        <div class="row">
-                        </div>
                         <div class="row">
                             <div class="col">
                                 <center>
@@ -166,10 +126,22 @@
                                     </center>
                             </div>
                         </div>
+                        
                         <hr>
                         <div class="row">
+                            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=DESKTOP-O1R2Q0Q\SQLEXPRESS01;Initial Catalog=SpeedyOrder;Integrated Security=True" OnSelecting="SqlDataSource1_Selecting" ProviderName="System.Data.SqlClient" SelectCommand="SELECT * FROM [Products]"></asp:SqlDataSource>
+
                             <div class="col">
-                                <asp:GridView CssClass="table table-stripped table-bordered table-hover" ID="ProductGridView" runat="server"></asp:GridView>
+                                <asp:GridView CssClass="table table-stripped table-bordered table-hover" ID="ProductGridView" runat="server" OnSelectedIndexChanged="ProductGridView_SelectedIndexChanged">
+                                    <Columns>
+                                        <asp:BoundField />
+                                    </Columns>
+                                </asp:GridView>
+                               <columns">
+                                   <asp:BoundField DataField="ID" HeaderText="ID" ReadOnly="True" SortExpression="ID" >
+                                
+                              </asp:BoundField>
+                               </columns>
                             </div>
                         </div>
 
@@ -177,15 +149,13 @@
                 </div>
                 
             </div>
-            <!----------------------------------------------- End Customers and Promos Datatable Section -------------------------------------->
+            <!----------------------------------------------- Products Datatable Section -------------------------------------->
         </div>
-    <!----------------------------------------------- End of Customers Management Section ------------------------------------------------------->
-        <!--------------------------------------------------------------------------------------------------------------------------------------->
-        <hr />
-        <!-------------------------------------------- Seller Management Section ---------------------------------------------->
+     <hr />
+ 
 
     
-   <!--------------------------------- End Seller Management Section ---------------------------------->
+ 
     <hr />
 
    

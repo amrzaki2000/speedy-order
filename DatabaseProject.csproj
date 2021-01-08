@@ -1727,6 +1727,7 @@
     <Content Include="fontawesome\webfonts\fa-brands-400.svg" />
     <Content Include="fontawesome\webfonts\fa-regular-400.svg" />
     <Content Include="fontawesome\webfonts\fa-solid-900.svg" />
+    <Content Include="imgs\buy-1.jpg" />
     <Content Include="imgs\cart.png" />
     <Content Include="imgs\category-1.jpg" />
     <Content Include="imgs\category-2.jpg" />
