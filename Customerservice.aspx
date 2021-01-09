@@ -72,7 +72,7 @@
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <asp:TextBox CssClass="form-control" ID="TextBox17" runat="server" placeholder="Username" TextMode="Password"></asp:TextBox>
+                                    <asp:TextBox CssClass="form-control" ID="TextBox17" runat="server" placeholder="Username"></asp:TextBox>
                                 </div>
 
                             </div>
@@ -91,7 +91,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <asp:Button ID="Button15" runat="server" Text="Update" class="btn btn-success btn-block" />
+                                    <asp:Button ID="Button15" runat="server" Text="Update" class="btn btn-success btn-block" OnClick="Button15_Click" />
                                 </div>
                             </div>
                         </div>
@@ -106,12 +106,12 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <asp:Button ID="Button1" runat="server" Text="View all Complaints" class="btn btn-primary btn-block" />
+                                    <asp:Button ID="Button1" runat="server" Text="View all Complaints" class="btn btn-primary btn-block" OnClick="Button1_Click" />
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <asp:Button ID="Button2" runat="server" Text="View Pending Complaints" class="btn btn-primary btn-block" />
+                                    <asp:Button ID="Button2" runat="server" Text="View Pending Complaints" class="btn btn-primary btn-block" OnClick="Button2_Click" />
                                 </div>
                             </div>
                         </div>
@@ -161,7 +161,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <asp:Button ID="Button3" runat="server" Text="Reply" class="btn btn-warning " />
+                                    <asp:Button ID="Button3" runat="server" Text="Reply" class="btn btn-warning " OnClick="Button3_Click" />
                                 </div>
                             </div>
                         </div>

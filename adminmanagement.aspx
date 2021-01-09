@@ -74,7 +74,7 @@
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <asp:TextBox CssClass="form-control" ID="TextBox17" runat="server" placeholder="Username" TextMode="Password"></asp:TextBox>
+                                    <asp:TextBox CssClass="form-control" ID="TextBox17" runat="server" placeholder="Username"></asp:TextBox>
                                 </div>
 
                             </div>
@@ -93,7 +93,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <asp:Button ID="Button15" runat="server" Text="Update" class="btn btn-success btn-block" />
+                                    <asp:Button ID="Button15" runat="server" Text="Update" class="btn btn-success btn-block" OnClick="Button15_Click" />
                                 </div>
                             </div>
                         </div>
@@ -193,7 +193,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <asp:Button ID="Insertadmin" runat="server" Text="Insert Admin" class="btn btn-danger btn-block" />
+                                    <asp:Button ID="Insertadmin" runat="server" Text="Insert Admin" class="btn btn-danger btn-block" OnClick="Insertadmin_Click" />
                                 </div>
                             </div>
                         </div>
@@ -289,7 +289,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <asp:Button ID="add_cs" runat="server" Text="Insert Customer Service Employee" class="btn btn-primary btn-block" />
+                                    <asp:Button ID="add_cs" runat="server" Text="Insert Customer Service Employee" class="btn btn-primary btn-block" OnClick="add_cs_Click" />
                                 </div>
                             </div>
                         </div>
@@ -421,22 +421,22 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Promo ID</label>
-                                    <asp:TextBox CssClass="form-control" ID="TextBox2" runat="server" TextMode="Number" placeholder="Promo ID"></asp:TextBox>
+                                    <asp:TextBox CssClass="form-control" ID="TextBox2" runat="server" placeholder="Promo ID"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Discount</label>
-                                    <asp:TextBox CssClass="form-control" ID="TextBox4" runat="server" TextMode="Number" placeholder="Discount Percentage"></asp:TextBox>
+                                    <asp:TextBox CssClass="form-control" ID="TextBox4" runat="server" TextMode="Number" placeholder="Discount Percentage" MaxLength="100"></asp:TextBox>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <asp:Button ID="Button1" runat="server" Text="Add Promo" class="btn btn-success btn-block" />
-                                    <asp:Button ID="Button9" runat="server" Text="Update Promo" class="btn btn-success btn-block" />
-                                    <asp:Button ID="Button8" runat="server" Text="Delete Promo" class="btn btn-success btn-block" />
+                                    <asp:Button ID="Button1" runat="server" Text="Add Promo" class="btn btn-success btn-block" OnClick="Button1_Click" />
+                                    <asp:Button ID="Button9" runat="server" Text="Update Promo" class="btn btn-success btn-block" OnClick="Button9_Click" />
+                                    <asp:Button ID="Button8" runat="server" Text="Delete Promo" class="btn btn-success btn-block" OnClick="Button8_Click" />
                                 </div>
                             </div>
                         </div>
