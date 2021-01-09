@@ -384,13 +384,13 @@ namespace DatabaseProject
         protected global::System.Web.UI.WebControls.Button Button5;
 
         /// <summary>
-        /// TextBox24 control.
+        /// DropDownList6 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox24;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList6;
 
         /// <summary>
         /// Button6 control.

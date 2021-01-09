@@ -29,7 +29,7 @@ namespace DatabaseProject
                     Response.Write("<script>alert('Invalid credentials');</script>");
                 }
                 
-                else if (dt.Rows[0][5].ToString().ToLower() == "admin")
+                else if (dt.Rows[0][6].ToString().ToLower() == "admin")
                 {
                     Response.Write("<script>alert('Login Successful, Hello "+ username.Text.Trim() + "');</script>");
                     userType = dt.Rows[0][5].ToString();
@@ -37,8 +37,21 @@ namespace DatabaseProject
                     Session["Password"] = TextBox1.Text.Trim();
                     Session["userType"] = userType;
                     Session["role"] = "admin";
-                    Response.Redirect("WebForm1.aspx");
+                    Session["adminID"] = dt.Rows[0][2].ToString();
+                    Response.Redirect("adminmanagement.aspx");
                 }
+                else if (dt.Rows[0][6].ToString().ToLower() == "customerservice")
+                {
+                    Response.Write("<script>alert('Login Successful, Hello " + username.Text.Trim() + "');</script>");
+                    userType = dt.Rows[0][5].ToString();
+                    Session["username"] = username.Text.Trim();
+                    Session["Password"] = TextBox1.Text.Trim();
+                    Session["userType"] = userType;
+                    Session["role"] = "customerservice";
+                    Session["userID"] = dt.Rows[0][5].ToString();
+                    Response.Redirect("Customerservice.aspx");
+                }
+
             }
             catch (Exception ex)
             {

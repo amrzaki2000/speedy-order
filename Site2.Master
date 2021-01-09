@@ -11,22 +11,27 @@
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
      <%--Datatables css--%>
     <link href="datatables/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+    
      <%--fontawesome css--%>
     <link href="fontawesome/css/all.css" rel="stylesheet" />
-
+        
 
     <%--My custom css--%>
-    <link href="css/Customstylesheet.css" rel="stylesheet" />
+    <link type="text/css" href="css/Customstylesheet.css" rel="stylesheet" />
 
      <%--jQuery--%>
-    <script src="bootstrap/js/jquery-3.3.1.slim.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/jquery-3.3.1.slim.min.js"></script>
 
      <%--popper js--%>
-    <script src="bootstrap/js/popper.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/popper.min.js"></script>
 
      <%--bootstrap js--%>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+   
+    <script type="text/javascript" src="datatables/js/jquery.dataTables.min.js"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 </head>
 <body>
@@ -98,6 +103,10 @@
                             <asp:LinkButton class="footerlinks" ID="LinkButton8" runat="server" OnClick="LinkButton8_Click" Visible="False">Product Inventory</asp:LinkButton>
                             &nbsp;
                             <asp:LinkButton class="footerlinks" ID="LinkButton9" runat="server" OnClick="LinkButton9_Click" Visible="False">Order Issuing</asp:LinkButton>
+
+                            &nbsp;
+
+                              <asp:LinkButton class="footerlinks" ID="LinkButton5" runat="server" OnClick="LinkButton5_Click" Visible="False">Customer Service</asp:LinkButton>
                             &nbsp;
                             
                         </p>

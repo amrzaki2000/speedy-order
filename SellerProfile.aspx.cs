@@ -18,7 +18,7 @@ namespace DatabaseProject
 
             controlObj = new Controller();              //Creating Controller Object
             val = new InputValidation();
-            
+
             if (Session["username"] == null)            //Checking if the current session is active
             {
                 Response.Write("<script>alert('Please Log in First')</script>");    //In case of inactive session, redirect the user to log-in page 
@@ -26,19 +26,19 @@ namespace DatabaseProject
             }
             else
             {
-
                 DataTable dt = controlObj.GetSellerInfo(Session["username"].ToString()); ;
-                
+
                 if (!Page.IsPostBack)
                 {
-                      // Set the information of the seller profile to their current Status
+                    // Set the information of the seller profile to their current Status
                     
+
                     TextBox1.Text = dt.Rows[0][0].ToString();
                     TextBox4.Text = dt.Rows[0][1].ToString();
                     TextBox9.Text = dt.Rows[0][3].ToString();
                     TextBox7.Text = dt.Rows[0][4].ToString();
                     TextBox8.Text = dt.Rows[0][5].ToString();
-                    
+
 
                     Label1.Text = "<i class=\"fa fa-star\"></i>  " + dt.Rows[0][6].ToString();
                     Label2.Text = "Active";
@@ -62,12 +62,19 @@ namespace DatabaseProject
                 }
                 GridView1.Visible = false;
 
-                dt = controlObj.GetAllsellerProd(Session["userID"].ToString());
-                DropDownList5.DataSource = dt;
-                DropDownList5.DataMember = ;
-                DropDownList5.DataBind();
+                if (!Page.IsPostBack)
+                {
+                    dt = controlObj.GetAllsellerProd(Session["userID"].ToString());
+                    DropDownList5.DataSource = dt;
+                    DropDownList5.DataTextField = "ProductID";
+                    DropDownList5.DataValueField = "ProductID";
+                    DropDownList5.DataBind();
 
-
+                    DropDownList6.DataSource = dt;
+                    DropDownList6.DataTextField = "ProductID";
+                    DropDownList6.DataValueField = "ProductID";
+                    DropDownList6.DataBind();
+                }
             }
 
 
@@ -141,8 +148,41 @@ namespace DatabaseProject
 
         }
 
+   
+        // Function for updating a product
         public void Updateproduct()
         {
+            string name = TextBox14.Text.Trim();
+            string filename = Path.GetFileName(FileUpload2.PostedFile.FileName);
+            string price = TextBox16.Text.Trim();
+            string color = TextBox17.Text.Trim();
+            string size = DropDownList3.SelectedValue.Trim();
+            string quantity = TextBox18.Text.Trim();
+            string category = DropDownList4.SelectedValue.Trim();
+            string desc = TextBox19.Text.Trim();
+
+            if(val.Checkblank(name, filename, price, color, size, quantity, category, desc))
+                Response.Write("<script>alert('Please do not leave any blank spaces')</script>");
+            else if (!(val.isPositive(int.Parse(price)) && val.isPositive(int.Parse(quantity))))
+                Response.Write("<script>alert('Please enter valid quantity and price')</script>");
+            else
+            {
+                string filepath = "~/imgs/Products/" + filename;
+                FileUpload2.SaveAs(Server.MapPath(filepath));
+                DataTable dt = controlObj.GetSellerID(Session["username"].ToString());
+                if (dt != null)
+                {
+                    int result = controlObj.UpdateProd(name, desc, color, category, size, price, quantity,DropDownList5.SelectedValue, filepath);
+                    if (result != 0)
+                        Response.Write("<script>alert('Product Updated Successfully')</script>");
+                    else
+                        Response.Write("<script>alert('There was a problem updating the product')</script>");
+                }
+                else
+                    Response.Write("<script>alert('Seller ID not found in the database')</script>");
+            }
+
+
 
         }
         protected void Button1_Click(object sender, EventArgs e) //Updates user Information onclick
@@ -161,6 +201,29 @@ namespace DatabaseProject
         {
             
             GridView1.Visible = true;
+        }
+
+        protected void TextBox6_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Button5_Click(object sender, EventArgs e)
+        {
+            Updateproduct();
+            GridView1.DataBind();
+        }
+
+        protected void Button6_Click(object sender, EventArgs e)
+        {
+
+            int result = controlObj.DeleteProd(DropDownList6.SelectedValue);
+            if(result==0)
+                Response.Write("<script>alert('Product ID not found in the database')</script>");
+            else
+                Response.Write("<script>alert('Product is deleted successfully')</script>");
+            GridView1.DataBind();
+            
         }
     }
 }

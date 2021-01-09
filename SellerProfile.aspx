@@ -1,11 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site2.Master" AutoEventWireup="true" CodeBehind="SellerProfile.aspx.cs" Inherits="DatabaseProject.SellerProfile" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <script type="text/javascript">
-      $(document).ready(function () {
-          $(".table").prepend($("<thead></thead>").append($(this).find("tr:first"))).dataTable();
-      });
+    
 
+
+    
+    <script type="text/javascript">
+     
+     
       function readURL(input) {
           if (input.files && input.files[0]) {
               var reader = new FileReader();
@@ -16,9 +18,21 @@
 
               reader.readAsDataURL(input.files[0]);
           }
-      }
+        }
 
-  </script>
+        function readURL1(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#imgview1').attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container-fluid">
@@ -272,7 +286,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <asp:GridView class="table table-striped table-bordered" ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ProductID" DataSourceID="SqlDataSource3" >
+                                    <asp:GridView Cssclass="table table-striped table-bordered" ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ProductID" DataSourceID="SqlDataSource3" >
                            <Columns>
                               <asp:BoundField DataField="ProductID" HeaderText="ID" ReadOnly="True" SortExpression="ProductID" >
                                  <ControlStyle Font-Bold="True" />
@@ -384,7 +398,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <asp:TextBox ID="TextBox6" runat="server" placeholder="Name"></asp:TextBox>
+                                    <asp:TextBox ID="TextBox6" runat="server" placeholder="Name" OnTextChanged="TextBox6_TextChanged"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -470,14 +484,14 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <img id="imgview" height="150px" width="150px" />
+                                    <img id="imgview1" height="150px" width="150px" />
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <asp:FileUpload ID="FileUpload2" CssClass="form-control" onchange="readURL(this)" runat="server" />
+                                    <asp:FileUpload ID="FileUpload2" CssClass="form-control" onchange="readURL1(this)" runat="server" />
                                 </div>
                             </div>
                         </div>
@@ -485,7 +499,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Products IDs</label>
-                                    <asp:DropDownList ID="DropDownList5" runat="server"></asp:DropDownList>
+                                    <asp:DropDownList ID="DropDownList5"  runat="server"></asp:DropDownList>
                                 </div>
                             </div>
                             </div>
@@ -550,7 +564,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <asp:Button ID="Button5" runat="server" Text="Update my Product" class="btn btn-info btn-block" />
+                                    <asp:Button ID="Button5" runat="server" Text="Update my Product" class="btn btn-info btn-block" OnClick="Button5_Click" />
                                 </div>
                             </div>
                         </div>
@@ -579,14 +593,14 @@
                             <div class="col">
                                 <div class="form-group">
                                     <label>Product ID</label>
-                                    <asp:TextBox ID="TextBox24" runat="server" TextMode="Number" placeholder="Product ID"></asp:TextBox>
+                                    <asp:DropDownList ID="DropDownList6" runat="server"></asp:DropDownList>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <asp:Button ID="Button6" runat="server" Text="Delete my Product" class="btn btn-danger btn-block" />
+                                    <asp:Button ID="Button6" runat="server" Text="Delete my Product" class="btn btn-danger btn-block" OnClick="Button6_Click" />
                                 </div>
                             </div>
                         </div>
@@ -598,5 +612,18 @@
         
 
     </div>
-    
+ <script type="text/javascript">
+     $(function () {
+         $(".table").prepend($("<thead></thead>").append($(this).find("tr:first"))).dataTable({
+             "paging": true,
+             "lengthChange": true,
+             "searching": true,
+             "ordering": true,
+             "info": true,
+             "autoWidth": true,
+             "responsive": true,
+
+         });
+     })
+ </script>
 </asp:Content>

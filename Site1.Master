@@ -12,6 +12,8 @@
      <%--fontawesome css--%>
     <link href="fontawesome/css/all.css" rel="stylesheet" />
 
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.js"></script>
 
     <%--My custom css--%>
     <link href="css/Customstylesheet.css" rel="stylesheet" />
@@ -25,6 +27,9 @@
      <%--bootstrap js--%>
     <script src="bootstrap/js/bootstrap.min.js"></script>
     
+        <script src="datatables/js/jquery.dataTables.min.js"></script>
+
+
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -180,7 +185,7 @@
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                         <p>
-                            <asp:LinkButton class="footerlinks" ID="LinkButton6" runat="server" OnClick="LinkButton6_Click">Admin and Customer Service Login</asp:LinkButton>
+                            <asp:LinkButton class="footerlinks" ID="LinkButton6" runat="server" OnClick="LinkButton6_Click">Admin & Customer Service Login</asp:LinkButton>
                             &nbsp;
                             <asp:LinkButton class="footerlinks" ID="LinkButton11" runat="server" OnClick="LinkButton11_Click" Visible="False">Admin Management</asp:LinkButton>
                             &nbsp;
@@ -190,6 +195,8 @@
                             <asp:LinkButton class="footerlinks" ID="LinkButton9" runat="server" OnClick="LinkButton9_Click" Visible="False">Order Issuing</asp:LinkButton>
                             &nbsp;
                              
+                            <asp:LinkButton class="footerlinks" ID="LinkButton5" runat="server" OnClick="LinkButton5_Click" Visible="False">Customer Service</asp:LinkButton>
+                            &nbsp;
                         </p>
  
                     </div>

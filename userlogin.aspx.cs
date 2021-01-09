@@ -44,7 +44,7 @@ namespace DatabaseProject
                     Session["role"] = "user";
                     Session["userID"] = userType.ToLower() == "seller" ? controllerObj.GetSellerID(username.Text.Trim()).Rows[0][0].ToString() : controllerObj.GetCustomerID(username.Text.Trim()).Rows[0][0].ToString();
                     Response.Redirect("WebForm1.aspx");
-                    
+                   
                     
                 }
             }

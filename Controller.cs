@@ -191,6 +191,93 @@ namespace DatabaseProject
             }
         }
 
+        public DataTable SelectOrder(string OrderID)
+        {
+            try
+            {
+                string query = "SELECT * FROM Orders WHERE OrderID='" + OrderID + "';";
+                return dbMan.ExecuteReader(query);
+            }
+            catch (Exception exp)
+            {
+                Console.WriteLine("There was a problem with the database");
+                return null;
+            }
+
+        }
+        public DataTable SelectAllOrders()
+        {
+            try
+            {
+                string query = "SELECT * FROM Orders;";
+                return dbMan.ExecuteReader(query);
+            }
+            catch (Exception exp)
+            {
+                Console.WriteLine("There was a problem with the database");
+                return null;
+            }
+
+        }
+        public DataTable SelectCustomer(string username)
+        {
+            try
+            {
+                string query = "SELECT Customers.CustomerID,Fname,Lname,Email,PhoneNumber,Address,Points FROM Customers,Subscriber WHERE Customers.CustomerID=Subscriber.CustomerID AND Username='" + username + "';";
+                return dbMan.ExecuteReader(query);
+            }
+            catch (Exception exp)
+            {
+                Console.WriteLine("There was a problem with the database");
+                return null;
+            }
+
+        }
+        public DataTable SelectAllCustomers()
+        {
+            try
+            {
+                string query = "SELECT * FROM Customers ;";
+                return dbMan.ExecuteReader(query);
+            }
+            catch (Exception exp)
+            {
+                Console.WriteLine("There was a problem with the database");
+                return null;
+            }
+
+        }
+
+        public DataTable SelectSeller(string username)
+        {
+            try
+            {
+                string query = "SELECT Sellers.SellerID,Fname,Lname,Email,PhoneNumber,Address,Rating,Profit,Income FROM Sellers,Subscriber WHERE Sellers.SellerID=Subscriber.SellerID AND Username='" + username + "';";
+                return dbMan.ExecuteReader(query);
+            }
+            catch (Exception exp)
+            {
+                Console.WriteLine("There was a problem with the database");
+                return null;
+            }
+
+        }
+        public DataTable SelectAllSeller()
+        {
+            try
+            {
+                string query = "SELECT * FROM Sellers ;";
+                return dbMan.ExecuteReader(query);
+
+            }
+            catch (Exception exp)
+            {
+                Console.WriteLine("There was a problem with the database");
+                return null;
+            }
+
+        }
+
         //************************* Insertion functions *********************************************//
 
         // Function for inserting a Customer
@@ -274,6 +361,20 @@ namespace DatabaseProject
                 return 0;
             }
         }
+        public int InsertAppeal(string Appeal, string username)
+        {
+            try
+            {
+                string query = "UPDATE Banned SET AppealDescription='" + Appeal + "' WHERE Bannedsub='" + username + "';";
+                return dbMan.ExecuteNonQuery(query);
+            }
+            catch (Exception exp)
+            {
+                Console.WriteLine("There was a problem with the database");
+                return 0;
+            }
+
+        }
 
         /*************************************************************************************************/
 
@@ -307,6 +408,126 @@ namespace DatabaseProject
                 return 0;
             }
         }
+        public int UpdateCustomer(string Fname, string Lname, int phoneNumber, string Address, string UserName, string Password)
+        {
+            try
+            {
+                string query = "UPDATE Customers SET Fname='" + Fname + "', Lname='" + Lname + "', PhoneNumber=" + phoneNumber + ", Address='" + Address + "'WHERE Customers.CustomerID in (SELECT CustomerID FROM Subscriber WHERE Username='" + UserName + "'AND Password='" + Password + "');";
+                return dbMan.ExecuteNonQuery(query);
+            }
+            catch (Exception exp)
+            {
+                Console.WriteLine("There was a problem with the database");
+                return 0;
+            }
+
+        }
+        public int UpdateCustomerPassword(string UserName, string newPassword)
+        {
+            try
+            {
+                string query = "UPDATE Subscriber SET Password='" + newPassword + "'WHERE Username='" + UserName + "';";
+                return dbMan.ExecuteNonQuery(query);
+            }
+            catch (Exception exp)
+            {
+                Console.WriteLine("There was a problem with the database");
+                return 0;
+            }
+
+        }
+
+        public int UpdateProd(string name, string descp, string color, string category, string size, string price, string quantity,  string ProductID, string prodimg)
+        {
+            try
+            {
+                string query = "Update Products set ProductName = '" + name + "', Description = '" + descp + "' , color = '" + color + "', category = '" + category + "'  " +
+                    " , size = '" + size + "' , price = " + price + " , quantity = " + quantity + ", prodImg = '" + prodimg + "' where ProductID = " + ProductID + " ;";
+                return dbMan.ExecuteNonQuery(query);
+            }
+            catch (Exception exp)
+            {
+                return 0;
+            }
+        }
+
+        public int BannSeller(int BanningAdmin, string BannedSub, string ReasonOfSusbension)
+        {
+            try
+            {
+                string query = "INSERT INTO Banned (BanningAdmin, BannedSub, ReasonOfSusbension, AppealStatus,AppealDescription) Values (" + BanningAdmin + ",'" + BannedSub + "','" + ReasonOfSusbension + "',null,null);";
+                return dbMan.ExecuteNonQuery(query);
+            }
+            catch (Exception exp)
+            {
+                Console.WriteLine("There was a problem with the database");
+                return 0;
+            }
+
+        }
+
+        public DataTable SelectAllBannedSellers()
+        {
+            try
+            {
+                //string query = "SELECT *FROM Banned ;";
+                string query = "SELECT BanningAdmin, BannedSub, ReasonOfSusbension AppealStatus,AppealDescription FROM Banned,Subscriber WHERE BannedSub = UserName AND UserType = 'Seller'";
+
+                return dbMan.ExecuteReader(query);
+            }
+            catch (Exception exp)
+            {
+                Console.WriteLine("There was a problem with the database");
+                return null;
+            }
+
+        }
+        public DataTable SelectAllBannedCustomers()
+        {
+            try
+            {
+                //string query = "SELECT *FROM Banned ;";
+                string query = "SELECT BanningAdmin, BannedSub, ReasonOfSusbension AppealStatus,AppealDescription FROM Banned,Subscriber WHERE BannedSub = UserName AND UserType = 'Customer'";
+
+                return dbMan.ExecuteReader(query);
+            }
+            catch (Exception exp)
+            {
+                Console.WriteLine("There was a problem with the database");
+                return null;
+            }
+
+        }
+        public int UnBannSeller(string SellerUser)
+        {
+            try
+            {
+                string query = "DELETE FROM Banned WHERE BannedSub='" + SellerUser + "' ;";
+                return dbMan.ExecuteNonQuery(query);
+            }
+            catch (Exception exp)
+            {
+                Console.WriteLine("There was a problem with the database");
+                return 0;
+            }
+
+        }
+
+
+        // Delete product
+        public int DeleteProd(string id)
+        {
+            try
+            {
+                string query = "Delete from Products where ProductID = " + id + ";";
+                return dbMan.ExecuteNonQuery(query);
+            }
+            catch
+            {
+                Console.WriteLine("There was a problem accessing the database");
+                return 0;
+            }
+        }
 
         public void TerminateConnection()
         {
@@ -314,4 +535,8 @@ namespace DatabaseProject
         }
       
     }
+
+
+    
 }
+

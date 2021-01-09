@@ -37,7 +37,7 @@ namespace DatabaseProject
                         LinkButton7.Text = "Hello " + Session["username"].ToString();
 
 
-                        LinkButton6.Visible = true; // admin login link button
+                        LinkButton6.Visible = false; // admin login link button
                         LinkButton11.Visible = false; // admin management link button
                         LinkButton8.Visible = false; // product inventory link button
                         LinkButton9.Visible = false; // Order issuing link button
@@ -56,6 +56,22 @@ namespace DatabaseProject
                         LinkButton11.Visible = true; // admin management link button
                         LinkButton8.Visible = true; // product inventory link button
                         LinkButton9.Visible = true; // Order issuing link button
+                    }
+                    else if (Session["role"].Equals("customerservice"))
+                    {
+                        LinkButton1.Visible = false; // user login link button
+                        LinkButton2.Visible = false; // sign up link button
+
+                        LinkButton3.Visible = true; // logout link button
+                        LinkButton7.Visible = true; // hello user link button
+                        LinkButton7.Text = "Hello " + Session["username"].ToString();
+
+
+                        LinkButton6.Visible = false; // admin login link button
+                        LinkButton11.Visible = false; // admin management link button
+                        LinkButton8.Visible = false; // product inventory link button
+                        LinkButton9.Visible = false; // Order issuing link button
+                        LinkButton5.Visible = true; // Customer Service link button 
                     }
 
                 }
@@ -82,9 +98,10 @@ namespace DatabaseProject
             Response.Redirect("productsinventory.aspx");
         }
 
-        protected void LinkButton9_Click(object sender, EventArgs e)
+        protected void LinkButton5_Click(object sender, EventArgs e)
         {
-           
+            Response.Redirect("Customerservice.aspx");
+
         }
 
         protected void LinkButton4_Click(object sender, EventArgs e)
@@ -132,6 +149,11 @@ namespace DatabaseProject
                 Response.Redirect("adminmanagement.aspx");
             else if (Session["userType"].Equals("Customer Service"))
                 Response.Redirect("Customerservice.aspx");
+        }
+
+        protected void LinkButton9_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("adminmanagement.aspx");
         }
     }
 }

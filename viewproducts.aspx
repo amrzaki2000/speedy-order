@@ -1,205 +1,150 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site2.Master" AutoEventWireup="true" CodeBehind="viewproducts.aspx.cs" Inherits="DatabaseProject.viewproducts" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-   
-     <!--   Featured products-->
-        <div class="small-container">
-            <div class="row2 row-2">
-            <h2 >All Products</h2>
-            <select>
-                 <option>Default Sorting</option>
-                 <option>Sort by price</option>
-                 <option>Sort by popularity</option>
-                 <option>Sort by rating</option>
-                 <option>Sort by sale</option>
-            </select>
-                </div>
-            <div class="row2">
-                <div class="col-4">   
-                    <img src="imgs/product-1.jpg"/>  
-                    <h4>Red Printed T-shirt</h4>
-                     <div class="rating">
-                         <i class="fa fa-star" ></i>
-                         <i class="fa fa-star" ></i>
-                         <i class="fa fa-star" ></i>
-                         <i class="fa fa-star" ></i>
-                         <i class="fa fa-star-o" aria-hidden="false"></i>
 
-                     </div>
-                    <p>$50.00</p>
-                    <asp:Button ID="Button1" runat="server" Text="Buy Now &#8594;" class="btn btn-success btn-block" style="background-color:#e73538; border-color: #fff;"/>
-                </div>
-                <div class="col-4">   
-                    <img src="imgs/product-2.jpg"/>  
-                    <h4>Black Shoes</h4>
-                     <div class="rating">
-                         <i class="fa fa-star" ></i>
-                         <i class="fa fa-star" ></i>
-                         <i class="fa fa-star" ></i>
-                         <i class="fa fa-star" ></i>
-                         <i class="fa fa-star-o" aria-hidden="false"></i>
+    <!--   Featured products-->
+    <div class="container">
+        <div class="row2 row-2">
+            <h2>All Products</h2>
+            <asp:GridView ID="GridView1" CssClass="table table-striped table-hover" runat="server" AutoGenerateColumns="False" DataKeyNames="ProductID" DataSourceID="SqlDataSource1">
+                <Columns>
+                    <asp:TemplateField>
+                        <ItemTemplate>
+                            <div class="container-fluid1" style="text-align: left">
+                                <div class="row">
+                                    <div class="col-lg-10">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <asp:Label ID="Label1" runat="server" CssClass="badge badge-pill badge-light" Text='<%# Eval("ProductName") %>' Font-Bold="True" Font-Size="Large"></asp:Label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label class="badge badge-pill badge-success">Category</label>
+                                                    <br />
+                                                    <asp:Label ID="Label2" runat="server" Text='<%# Eval("Category") %>'></asp:Label>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label class="badge badge-pill badge-warning">Size</label>
+                                                    <br />
+                                                    <asp:Label ID="Label4" runat="server" Text='<%# Eval("Size") %>'></asp:Label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label class="badge badge-pill badge-danger">Price</label>
+                                                    <br />
+                                                    <asp:Label ID="Label3" runat="server" Text='<%# Eval("Price") %>'></asp:Label>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label class="badge badge-pill badge-primary">Rating</label>
+                                                    <br />
+                                                    <asp:Label ID="Label8" runat="server" Text='<%# Eval("Rating") %>'></asp:Label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label class="badge badge-pill badge-success">Quantity</label>
+                                                    <br />
+                                                    <asp:Label ID="Label5" runat="server" Text='<%# Eval("Quantity") %>'></asp:Label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label class="badge badge-pill badge-info">Description</label>
+                                                    <asp:Label ID="Label6" runat="server" CssClass="text-black-50 form-text font-italic" Text='<%# Eval("Description") %>'></asp:Label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <asp:TextBox ID="TextBox1" runat="server" TextMode="MultiLine" placeholder="Submit Your Review"></asp:TextBox>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <label class="badge badge-pill badge-secondary">Select Quantity</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <asp:TextBox ID="TextBox2" runat="server" TextMode="Number" placeholder="Quantity"></asp:TextBox>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
 
-                     </div>
-                    <p>$50.00</p>
-                      <asp:Button ID="Button2" runat="server" Text="Buy Now &#8594;" class="btn btn-success btn-block" style="background-color:#e73538; border-color: #fff;"/>
-                </div>
-                <div class="col-4">   
-                    <img src="imgs/product-3.jpg"/>  
-                    <h4>Grey Sweatpants</h4>
-                     <div class="rating">
-                         <i class="fa fa-star" ></i>
-                         <i class="fa fa-star" ></i>
-                         <i class="fa fa-star" ></i>
-                         <i class="fa fa-star" ></i>
-                         <i class="fa fa-star-o" aria-hidden="false"></i>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label class="badge badge-pill badge-success">Rating</label>
+                                                    <asp:DropDownList ID="DropDownList1" runat="server">
+                                                        <asp:ListItem>1</asp:ListItem>
+                                                        <asp:ListItem>2</asp:ListItem>
+                                                        <asp:ListItem>3</asp:ListItem>
+                                                        <asp:ListItem>4</asp:ListItem>
+                                                        <asp:ListItem>5</asp:ListItem>
+                                                    </asp:DropDownList>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <asp:Button ID="Button1"  CssClass="btn btn-warning btn-block" runat="server" Text="Submit Review" />
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <asp:Button ID="Button2" CssClass="btn btn-danger btn-block" runat="server" Text="Add to Cart" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <asp:Image class="img-fluid" ID="Image1" runat="server" ImageUrl='<%# Eval("prodImg") %>' />
+                                    </div>
 
-                     </div>
-                    <p>$50.00</p>
-                      <asp:Button ID="Button3" runat="server" Text="Buy Now &#8594;" class="btn btn-success btn-block" style="background-color:#e73538; border-color: #fff;"/>
-                </div>
-                <div class="col-4">   
-                    <img src="imgs/product-4.jpg"/>  
-                    <h4>Navy T-shirt</h4>
-                     <div class="rating">
-                         <i class="fa fa-star" ></i>
-                         <i class="fa fa-star" ></i>
-                         <i class="fa fa-star" ></i>
-                         <i class="fa fa-star" ></i>
-                         <i class="fa fa-star-half-o" ></i>
+                                </div>
+                            </div>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+            </asp:GridView>
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:SpeedyOrderConnectionString %>" SelectCommand="SELECT [ProductID], [ProductName], [Description] AS Description, [Color] AS Color, [Category] AS Category, [Size], [Price], [quantity], [Rating] AS Rating, [prodImg] FROM [Products]"></asp:SqlDataSource>
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                $(".table").prepend($("<thead></thead>").append($(this).find("tr:first"))).dataTable({
+                    "paging": true,
+                    "lengthChange": true,
+                    "searching": true,
+                    "ordering": true,
+                    "info": true,
+                    "autoWidth": true,
+                    "responsive": true,
 
-                     </div>
-                    <p>$50.00</p>
-                      <asp:Button ID="Button4" runat="server" Text="Buy Now &#8594;" class="btn btn-success btn-block" style="background-color:#e73538; border-color: #fff;"/>
-                </div>
-                
-
-            </div>
-              <div class="row2">
-                <div class="col-4">   
-                    <img src="imgs/product-11.jpg"/>  
-                    <h4>Nike Air Force</h4>
-                     <div class="rating">
-                         <i class="fa fa-star" ></i>
-                         <i class="fa fa-star" ></i>
-                         <i class="fa fa-star" ></i>
-                         <i class="fa fa-star" ></i>
-                         <i class="fa fa-star-o" aria-hidden="false"></i>
-
-                     </div>
-                    <p>$50.00</p>
-                      <asp:Button ID="Button5" runat="server" Text="Buy Now &#8594;" class="btn btn-success btn-block" style="background-color:#e73538; border-color: #fff;"/>
-                </div>
-                <div class="col-4">   
-                    <img src="imgs/product-11.jpg"/>  
-                    <h4>Grey Shoes</h4>
-                     <div class="rating">
-                         <i class="fa fa-star" ></i>
-                         <i class="fa fa-star" ></i>
-                         <i class="fa fa-star" ></i>
-                         <i class="fa fa-star" ></i>
-                         <i class="fa fa-star-o" aria-hidden="false"></i>
-
-                     </div>
-                    <p>$50.00</p>
-                      <asp:Button ID="Button6" runat="server" Text="Buy Now &#8594;" class="btn btn-success btn-block" style="background-color:#e73538; border-color: #fff;"/>
-                </div>
-                <div class="col-4">   
-                    <img src="imgs/product-6.jpg"/>  
-                    <h4>Black T-shirt</h4>
-                     <div class="rating">
-                         <i class="fa fa-star" ></i>
-                         <i class="fa fa-star" ></i>
-                         <i class="fa fa-star" ></i>
-                         <i class="fa fa-star" ></i>
-                         <i class="fa fa-star-o" aria-hidden="false"></i>
-
-                     </div>
-                    <p>$50.00</p>
-                      <asp:Button ID="Button7" runat="server" Text="Buy Now &#8594;" class="btn btn-success btn-block" style="background-color:#e73538; border-color: #fff;"/>
-                </div>
-                <div class="col-4">   
-                    <img src="imgs/product-7.jpg"/>  
-                    <h4>Socks</h4>
-                     <div class="rating">
-                         <i class="fa fa-star" ></i>
-                         <i class="fa fa-star" ></i>
-                         <i class="fa fa-star" ></i>
-                         <i class="fa fa-star" ></i>
-                         <i class="fa fa-star-half-o" ></i>
-
-                     </div>
-                    <p>$50.00</p>
-                      <asp:Button ID="Button8" runat="server" Text="Buy Now &#8594;" class="btn btn-success btn-block" style="background-color:#e73538; border-color: #fff;"/>
-                </div>
-                <div class="row2">
-                <div class="col-4">   
-                    <img src="imgs/product-8.jpg"/>  
-                    <h4>Fossil Watch</h4>
-                     <div class="rating">
-                         <i class="fa fa-star" ></i>
-                         <i class="fa fa-star" ></i>
-                         <i class="fa fa-star" ></i>
-                         <i class="fa fa-star" ></i>
-                         <i class="fa fa-star-o" aria-hidden="false"></i>
-
-                     </div>
-                    <p>$50.00</p>
-                      <asp:Button ID="Button9" runat="server" Text="Buy Now &#8594;" class="btn btn-success btn-block" style="background-color:#e73538; border-color: #fff;"/>
-                </div>
-                <div class="col-4">   
-                    <img src="imgs/product-9.jpg"/>  
-                    <h4>Roadster Watch</h4>
-                     <div class="rating">
-                         <i class="fa fa-star" ></i>
-                         <i class="fa fa-star" ></i>
-                         <i class="fa fa-star" ></i>
-                         <i class="fa fa-star" ></i>
-                         <i class="fa fa-star-o" aria-hidden="false"></i>
-
-                     </div>
-                    <p>$50.00</p>
-                      <asp:Button ID="Button10" runat="server" Text="Buy Now &#8594;" class="btn btn-success btn-block" style="background-color:#e73538; border-color: #fff;"/>
-                </div>
-                <div class="col-4">   
-                    <img src="imgs/product-10.jpg"/>  
-                    <h4>Black Shoes</h4>
-                     <div class="rating">
-                         <i class="fa fa-star" ></i>
-                         <i class="fa fa-star" ></i>
-                         <i class="fa fa-star" ></i>
-                         <i class="fa fa-star" ></i>
-                         <i class="fa fa-star-o" aria-hidden="false"></i>
-
-                     </div>
-                    <p>$50.00</p>
-                      <asp:Button ID="Button11" runat="server" Text="Buy Now &#8594;" class="btn btn-success btn-block" style="background-color:#e73538; border-color: #fff;"/>
-                </div>
-                <div class="col-4">   
-                    <img src="imgs/product-12.jpg"/>  
-                    <h4>Black Sweatpants</h4>
-                     <div class="rating">
-                         <i class="fa fa-star" ></i>
-                         <i class="fa fa-star" ></i>
-                         <i class="fa fa-star" ></i>
-                         <i class="fa fa-star" ></i>
-                         <i class="fa fa-star-half-o" ></i>
-
-                     </div>
-                    <p>$50.00</p>
-                      <asp:Button ID="Button12" runat="server" Text="Buy Now &#8594;" class="btn btn-success btn-block" style="background-color:#e73538; border-color: #fff;"/>
-                </div>
-                
-
-            </div>
-              </div>    
-            <div class="page-btn">
-                  <span>1</span>
-                  <span>2</span>
-                  <span>3</span>
-                  <span>4</span>
-                <span>&#8594;</span>
-            </div>
-            </div>
-
+                });
+            })
+           </script>
 </asp:Content>
