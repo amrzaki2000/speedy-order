@@ -37,7 +37,8 @@ namespace DatabaseProject
                     Session["Password"] = TextBox1.Text.Trim();
                     Session["userType"] = userType;
                     Session["role"] = "admin";
-                    Response.Redirect("WebForm1.aspx");
+                    Session["adminID"] = dt.Rows[0][2].ToString();
+                    Response.Redirect("adminmanagement.aspx");
                 }
                 else if (dt.Rows[0][6].ToString().ToLower() == "customerservice")
                 {

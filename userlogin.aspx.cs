@@ -43,7 +43,14 @@ namespace DatabaseProject
                     Session["userType"] = userType;
                     Session["role"] = "user";
                     Response.Redirect("WebForm1.aspx");
-                    
+                    if(Session["userType"].ToString().ToLower()=="seller")
+                    {
+                        Session["userID"] = dt.Rows[0][3].ToString();
+                    }
+                    else if(Session["userType"].ToString().ToLower() == "customer")
+                    {
+                        Session["userID"] = dt.Rows[0][4].ToString();
+                    }
                     
                 }
             }

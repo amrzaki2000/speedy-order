@@ -349,15 +349,15 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Customer ID</label>
-                                    <asp:TextBox CssClass="form-control" ID="TextBox1" runat="server" TextMode="Number" placeholder="Customer ID"></asp:TextBox>
+                                    <label>Customer Username</label>
+                                    <asp:TextBox CssClass="form-control" ID="TextBox1" runat="server" TextMode="SingleLine" placeholder="Customer Username"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
 
-                                    <asp:Button ID="Button2" runat="server" Text="Get Customer" class="btn btn-primary btn-block" />
-                                    <asp:Button ID="Button4" runat="server" Text="View All" class="btn btn-primary btn-block" />
+                                    <asp:Button ID="Button2" runat="server" Text="Get Customer" class="btn btn-primary btn-block" OnClick="Button2_Click" />
+                                    <asp:Button ID="Button4" runat="server" Text="View All" class="btn btn-primary btn-block" OnClick="Button4_Click" />
 
                                 </div>
                             </div>
@@ -380,16 +380,16 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Customer ID</label>
-                                    <asp:TextBox CssClass="form-control" ID="TextBox3" runat="server" TextMode="Number" placeholder="Customer ID"></asp:TextBox>
+                                    <label>Customer Username</label>
+                                    <asp:TextBox CssClass="form-control" ID="TextBox3" runat="server" TextMode="SingleLine" placeholder="Customer Username"></asp:TextBox>
                                 </div>
 
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <asp:Button ID="Button3" runat="server" Text="Ban Customer" class="btn btn-danger btn-block" />
-                                    <asp:Button ID="Button5" runat="server" Text="View Banned" class="btn btn-danger btn-block" />
-                                    <asp:Button ID="Button6" runat="server" Text="Unban Customer" class="btn btn-danger btn-block" />
+                                    <asp:Button ID="Button3" runat="server" Text="Ban Customer" class="btn btn-danger btn-block" OnClick="Button3_Click" />
+                                    <asp:Button ID="Button5" runat="server" Text="View Banned Customers" class="btn btn-danger btn-block" OnClick="Button5_Click" />
+                                    <asp:Button ID="Button6" runat="server" Text="Unban Customer" class="btn btn-danger btn-block" OnClick="Button6_Click" />
                                 </div>
                             </div>
                         </div>
@@ -549,15 +549,15 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Seller ID</label>
-                                    <asp:TextBox CssClass="form-control" ID="TextBox8" runat="server" TextMode="Number" placeholder="Seller ID"></asp:TextBox>
+                                    <label>Seller Username</label>
+                                    <asp:TextBox CssClass="form-control" ID="TextBox8" runat="server" placeholder="Seller Username"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
 
-                                    <asp:Button ID="Button10" runat="server" Text="Get Seller" class="btn btn-primary btn-block" />
-                                    <asp:Button ID="Button11" runat="server" Text="View All" class="btn btn-primary btn-block" />
+                                    <asp:Button ID="Button10" runat="server" Text="Get Seller" class="btn btn-primary btn-block" OnClick="Button10_Click" />
+                                    <asp:Button ID="Button11" runat="server" Text="View All" class="btn btn-primary btn-block" OnClick="Button11_Click" />
 
                                 </div>
                             </div>
@@ -580,16 +580,16 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Seller ID</label>
-                                    <asp:TextBox CssClass="form-control" ID="TextBox9" runat="server" TextMode="Number" placeholder="Seller ID"></asp:TextBox>
+                                    <label>Seller Username</label>
+                                    <asp:TextBox CssClass="form-control" ID="TextBox9" runat="server" TextMode="SingleLine" placeholder="Seller Username"></asp:TextBox>
                                 </div>
 
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <asp:Button ID="Button12" runat="server" Text="Ban Seller" class="btn btn-danger btn-block" />
-                                    <asp:Button ID="Button13" runat="server" Text="View Banned" class="btn btn-danger btn-block" />
-                                    <asp:Button ID="Button14" runat="server" Text="Unban Seller" class="btn btn-danger btn-block" />
+                                    <asp:Button ID="Button12" runat="server" Text="Ban Seller" class="btn btn-danger btn-block" OnClick="Button12_Click" />
+                                    <asp:Button ID="Button13" runat="server" Text="View Banned Sellers" class="btn btn-danger btn-block" OnClick="Button13_Click" />
+                                    <asp:Button ID="Button14" runat="server" Text="Unban Seller" class="btn btn-danger btn-block" OnClick="Button14_Click" />
                                 </div>
                             </div>
                         </div>
@@ -670,8 +670,8 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                      <asp:Button ID="Button20" runat="server" Text="Get Order" class="btn btn-primary btn-block" />
-                                     <asp:Button ID="Button16" runat="server" Text="View All" class="btn btn-primary btn-block" />
+                                      <asp:Button ID="Button20" runat="server" Text="Get Order" class="btn btn-primary btn-block" OnClick="Button20_Click" />
+                                     <asp:Button ID="Button16" runat="server" Text="View All" class="btn btn-primary btn-block" OnClick="Button16_Click" />
                                 </div>
                             </div>
                         </div>

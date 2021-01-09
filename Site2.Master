@@ -98,6 +98,10 @@
                             <asp:LinkButton class="footerlinks" ID="LinkButton8" runat="server" OnClick="LinkButton8_Click" Visible="False">Product Inventory</asp:LinkButton>
                             &nbsp;
                             <asp:LinkButton class="footerlinks" ID="LinkButton9" runat="server" OnClick="LinkButton9_Click" Visible="False">Order Issuing</asp:LinkButton>
+
+                            &nbsp;
+
+                              <asp:LinkButton class="footerlinks" ID="LinkButton5" runat="server" OnClick="LinkButton5_Click" Visible="False">Customer Service</asp:LinkButton>
                             &nbsp;
                             
                         </p>
