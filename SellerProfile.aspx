@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site2.Master" AutoEventWireup="true" CodeBehind="SellerProfile.aspx.cs" Inherits="DatabaseProject.SellerProfile" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-  <script type="text/javascript">
+    <script type="text/javascript">
       $(document).ready(function () {
           $(".table").prepend($("<thead></thead>").append($(this).find("tr:first"))).dataTable();
       });
@@ -175,7 +175,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <asp:Button ID="Button2" runat="server" Text="Appeal" class="btn btn-warning " />
+                                    <asp:Button ID="Button2" runat="server" Text="Appeal" class="btn btn-warning "  />
 
                                 </div>
                             </div>
@@ -248,6 +248,7 @@
                             <div class="col">
                                 <div class="form-group">
                                     <h6>Product Management
+                                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=DESKTOP-O1R2Q0Q\SQLEXPRESS01;Initial Catalog=SpeedyOrder2;Integrated Security=True" ProviderName="System.Data.SqlClient" SelectCommand="SELECT * FROM [Products]"></asp:SqlDataSource>
                                     </h6>
                                 </div>
                             </div>
@@ -271,7 +272,69 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <asp:GridView CssClass="table table-stripped table-bordered table-hover" ID="GridView1" runat="server"></asp:GridView>
+                                    <asp:GridView class="table table-striped table-bordered" ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ProductID" DataSourceID="SqlDataSource3" >
+                           <Columns>
+                              <asp:BoundField DataField="ProductID" HeaderText="ID" ReadOnly="True" SortExpression="ProductID" >
+                                 <ControlStyle Font-Bold="True" />
+                                 <ItemStyle Font-Bold="True" />
+                              </asp:BoundField>
+                              <asp:TemplateField>
+                                 <ItemTemplate>
+                                    <div class="container-fluid1" style="text-align:left">
+                                       <div class="row">
+                                          <div class="col-lg-10">
+                                             <div class="row">
+                                                <div class="col-12">
+                                                   <asp:Label ID="Label1" runat="server" Text='<%# Eval("ProductName") %>' Font-Bold="True" Font-Size="X-Large"></asp:Label>
+                                                </div>
+                                             </div>
+                                             <div class="row">
+                                                <div class="col-12">
+                                                   <span>Category - </span>
+                                                   <asp:Label ID="Label2" runat="server" Font-Bold="True" Text='<%# Eval("Category") %>'></asp:Label>
+                                                   &nbsp;| <span><span>&nbsp;
+                                                   <span>
+                                                      Size -<span>&nbsp;</span>
+                                                      <asp:Label ID="Label4" runat="server" Font-Bold="True" Text='<%# Eval("Size") %>'></asp:Label>
+                                                   </span>
+                                                </div>
+                                             </div>
+                                             <div class="row">
+                                                <div class="col-12">
+                                                   Price -
+                                                   <asp:Label ID="Label5" runat="server" Font-Bold="True" Text='<%# Eval("Price") %>'></asp:Label>
+                                                   &nbsp;| Rating -
+                                                   <asp:Label ID="Label6" runat="server" Font-Bold="True" Text='<%# Eval("Rating") %>'></asp:Label>
+                                                   &nbsp;| Quantity -
+                                                   <asp:Label ID="Label7" runat="server" Font-Bold="True" Text='<%# Eval("quantity") %>'></asp:Label>
+                                                   &nbsp;| Quality -
+                                                   <asp:Label ID="Label8" runat="server" Font-Bold="True" Text='<%# Eval("QualityStatus") %>'></asp:Label>
+                                                </div>
+                                             </div>
+                                             
+                                             <div class="row">
+                                                <div class="col-12">
+                                                   Description -
+                                                   <asp:Label ID="Label12" runat="server" Font-Bold="True" Font-Italic="True" Font-Size="Smaller" Text='<%# Eval("Description") %>'></asp:Label>
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div class="col-lg-2">
+                                             <asp:Image class="img-fluid" ID="Image1" runat="server" ImageUrl='<%# Eval("prodImg") %>' />
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </ItemTemplate>
+                              </asp:TemplateField>
+                           </Columns>
+                        </asp:GridView>
+
+                                    <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:SpeedyOrderConnectionString %>" SelectCommand="SELECT [ProductID], [ProductName], [Description], [Category], [Size], [Price], [Rating], [quantity], [prodImg], [Seller], [QualityStatus] FROM [Products] WHERE ([Seller] = @Seller)">
+                                        <SelectParameters>
+                                            <asp:SessionParameter Name="Seller" SessionField="userID" Type="Int32" />
+                                        </SelectParameters>
+                                    </asp:SqlDataSource>
+
                                 </div>
                             </div>
                         </div>
@@ -286,7 +349,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <asp:Button ID="Button3" runat="server" Text="View my Products" class="btn btn-primary btn-block" OnClick="Button3_Click" />
+                                    <asp:Button ID="Button3" runat="server" Text="View my Products" class="btn btn-primary btn-block" OnClick="Button3_Click1" />
                                 </div>
                             </div>
                         </div>
@@ -378,7 +441,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <asp:Button ID="Button4" runat="server" Text="Add my Product" class="btn btn-secondary btn-block" />
+                                    <asp:Button ID="Button4" runat="server" Text="Add my Product" class="btn btn-secondary btn-block" OnClick="Button4_Click" />
                                 </div>
                             </div>
                         </div>
@@ -396,6 +459,7 @@
                                 </div>
                             </div>
                         </div>
+                        <!------------------------------- Products Update -------------------------------------------------------->
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
@@ -406,48 +470,83 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <label>Product ID</label>
-                                    <asp:TextBox ID="TextBox22" runat="server" TextMode="Number" placeholder="Product ID"></asp:TextBox>
+                                    <img id="imgview" height="150px" width="150px" />
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col">
                                 <div class="form-group">
-                                    <asp:TextBox ID="TextBox16" runat="server" placeholder="Name"></asp:TextBox>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <asp:TextBox ID="TextBox17" runat="server" placeholder="Price" TextMode="Number"></asp:TextBox>
+                                    <asp:FileUpload ID="FileUpload2" CssClass="form-control" onchange="readURL(this)" runat="server" />
                                 </div>
                             </div>
                         </div>
                         <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Products IDs</label>
+                                    <asp:DropDownList ID="DropDownList5" runat="server"></asp:DropDownList>
+                                </div>
+                            </div>
+                            </div>
+                        <div class="row">
                             <div class="col-md-6">
+                                <div class="form-group">
+                                    <asp:TextBox ID="TextBox14" runat="server" placeholder="Name"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <asp:TextBox ID="TextBox16" runat="server" placeholder="Price" TextMode="Number"></asp:TextBox>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Product Color</label>
-                                    <asp:TextBox ID="TextBox18" runat="server" placeholder="Color" TextMode="Color"></asp:TextBox>
+                                    <asp:TextBox ID="TextBox17" runat="server" placeholder="Color" TextMode="Color"></asp:TextBox>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
-                                    <asp:TextBox ID="TextBox19" runat="server" placeholder="Size" TextMode="SingleLine"></asp:TextBox>
+                                    <label>Size</label>
+                                    <asp:DropDownList ID="DropDownList3" runat="server">
+                                        <asp:ListItem>XS</asp:ListItem>
+                                        <asp:ListItem>S</asp:ListItem>
+                                        <asp:ListItem>M</asp:ListItem>
+                                        <asp:ListItem>L</asp:ListItem>
+                                        <asp:ListItem>XL</asp:ListItem>
+                                    </asp:DropDownList>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Quantity</label>
+                                    <asp:TextBox ID="TextBox18" runat="server" TextMode="Number"></asp:TextBox>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <asp:TextBox ID="TextBox20" runat="server" placeholder="Category" TextMode="SingleLine"></asp:TextBox>
+                                    <label>Category</label>
+                                    <asp:DropDownList ID="DropDownList4" runat="server">
+                                        <asp:ListItem>T-shirts</asp:ListItem>
+                                        <asp:ListItem>Shoes</asp:ListItem>
+                                        <asp:ListItem>Trousers</asp:ListItem>
+                                        <asp:ListItem>Socks</asp:ListItem>
+                                    </asp:DropDownList>
                                 </div>
                             </div>
+
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <asp:TextBox ID="TextBox21" runat="server" placeholder="Description" TextMode="Multiline" Rows="5" Columns="30"></asp:TextBox>
+                                    <asp:TextBox ID="TextBox19" runat="server" placeholder="Description" TextMode="Multiline" Rows="5" Columns="30"></asp:TextBox>
                                 </div>
                             </div>
                         </div>
+                       
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
@@ -496,7 +595,8 @@
                 </div>
             </div>
         </div>
-
+        
 
     </div>
+    
 </asp:Content>

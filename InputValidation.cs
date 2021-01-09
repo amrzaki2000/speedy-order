@@ -53,5 +53,10 @@ namespace DatabaseProject
             return false;
         }
 
+        //Function to check if the input number is positive
+        public bool isPositive(int num)
+        {
+            return num > 0;
+        }
     }
 }

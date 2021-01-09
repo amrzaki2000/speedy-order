@@ -135,10 +135,64 @@ namespace DatabaseProject
             }
         }
 
-        //public DataTable GetProductsofaSeller()
+        //Function to get a specific Product
+        public DataTable GetProduct(string id)
+        {
+            try
+            {
+                string query = "SELECT * FROM Products WHERE ProductID = " + id + ";";
+                return dbMan.ExecuteReader(query);
+            }
+            catch
+            {
+                Console.WriteLine("Couldn't Connect to database");
+                return null;
+            }
+        }
+
+        //                 _--------------------------Hannah 8Jan
+        public DataTable GetSellerID(string username)         //Function returning a table carrying the information of a Seller
+        {
+            try
+            {
+                string query = "select SellerID from Subscriber where Username='" + username + "';";
+                return dbMan.ExecuteReader(query);
+            }
+            catch (Exception exp)
+            {
+                Console.WriteLine("Couldn't Connect to database");
+                return null;
+            }
+        }
+        public DataTable GetCustomerID(string username)         //Function returning a table carrying the information of a Seller
+        {
+            try
+            {
+                string query = "select CustomerID from Subscriber where Username='" + username + "';";
+                return dbMan.ExecuteReader(query);
+            }
+            catch (Exception exp)
+            {
+                Console.WriteLine("Couldn't Connect to database");
+                return null;
+            }
+        }
+        public DataTable GetAllsellerProd(string sellerID)         //Function returning a table carrying the information of a Seller
+        {
+            try
+            {
+                string query = "select * from Products where Seller= " + sellerID + ";";
+                return dbMan.ExecuteReader(query);
+            }
+            catch (Exception exp)
+            {
+                Console.WriteLine("Couldn't Connect to database");
+                return null;
+            }
+        }
 
         //************************* Insertion functions *********************************************//
-        
+
         // Function for inserting a Customer
         public int InsertCustomer(string email, string first, string last, string phone, string address, string birth)
         {
@@ -206,6 +260,20 @@ namespace DatabaseProject
             }
         }
 
+        //Function for adding new product by a seller
+        public int InsertProd(string name, string descp, string color, string category, string size, string price, string rating, string quantity, string qadmin, string status, string sellerID, string prodimg)
+        {
+            try
+            {
+                string query = "Insert into Products values ('" + name + "','" + descp + "','" + color + "','" + category + "','" + size + "'," +
+                    " " + price + ", " + rating + "," + quantity + "," + qadmin + ", '" + status + "', " + sellerID + ",'" + prodimg + "');";
+                return dbMan.ExecuteNonQuery(query);
+            }
+            catch (Exception exp)
+            {
+                return 0;
+            }
+        }
 
         /*************************************************************************************************/
 
@@ -244,6 +312,6 @@ namespace DatabaseProject
         {
             dbMan.CloseConnection();
         }
-
+      
     }
 }
