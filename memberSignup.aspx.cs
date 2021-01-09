@@ -20,7 +20,6 @@ namespace DatabaseProject
             controllerObj = new Controller();
             val = new InputValidation();
         }
-
         protected void signup()
         {
             string username = TextBox2.Text.Trim();
