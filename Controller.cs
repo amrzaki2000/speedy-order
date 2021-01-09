@@ -269,5 +269,80 @@ namespace DatabaseProject
                 return null;
             }
         }
+
+        //-----------------------------Abdelrahmannn------------------------
+        public int UpdateCustomer(string Fname, string Lname, int phoneNumber, string Address, string UserName, string Password)
+        {
+            string query = "UPDATE Customers SET Fname='" + Fname + "', Lname='" + Lname + "', PhoneNumber=" + phoneNumber + ", Address='" + Address + "'WHERE Customers.CustomerID in (SELECT CustomerID FROM Subscriber WHERE Username='" + UserName + "'AND Password='" + Password + "');";
+            return dbMan.ExecuteNonQuery(query);
+        }
+        public int UpdateCustomerPassword(string UserName, string newPassword)
+        {
+            string query = "UPDATE Subscriber SET Password='" + newPassword + "'WHERE Username='" + UserName + "';";
+            return dbMan.ExecuteNonQuery(query);
+        }
+        public int InsertAppeal(string Appeal, string username)
+        {
+            string query = "UPDATE Banned SET AppealDescription='" + Appeal + "' WHERE Bannedsub='" + username + "';";
+            return dbMan.ExecuteNonQuery(query);
+        }
+
+        public DataTable SelectSeller(string username)
+        {
+            string query = "SELECT Sellers.SellerID,Fname,Lname,Email,PhoneNumber,Address,Rating,Profit,Income FROM Sellers,Subscriber WHERE Sellers.SellerID=Subscriber.SellerID AND Username='" + username + "';";
+            return dbMan.ExecuteReader(query);
+
+        }
+        public DataTable SelectAllSeller()
+        {
+            string query = "SELECT * FROM Sellers ;";
+            return dbMan.ExecuteReader(query);
+        }
+        public int BannSeller(int BanningAdmin, string BannedSub, string ReasonOfSusbension)
+        {
+            string query = "INSERT INTO Banned (BanningAdmin, BannedSub, ReasonOfSusbension, AppealStatus,AppealDescription) Values (" + BanningAdmin + ",'" + BannedSub + "','" + ReasonOfSusbension + "',null,null);";
+            return dbMan.ExecuteNonQuery(query);
+        }
+
+        public DataTable SelectAllBannedSellers()
+        {
+            //string query = "SELECT *FROM Banned ;";
+            string query = "SELECT BanningAdmin, BannedSub, ReasonOfSusbension AppealStatus,AppealDescription FROM Banned,Subscriber WHERE BannedSub = UserName AND UserType = 'Seller'";
+
+            return dbMan.ExecuteReader(query);
+        }
+        public DataTable SelectAllBannedCustomers()
+        {
+            //string query = "SELECT *FROM Banned ;";
+            string query = "SELECT BanningAdmin, BannedSub, ReasonOfSusbension AppealStatus,AppealDescription FROM Banned,Subscriber WHERE BannedSub = UserName AND UserType = 'Customer'";
+
+            return dbMan.ExecuteReader(query);
+        }
+        public int UnBannSeller(string SellerUser)
+        {
+            string query = "DELETE FROM Banned WHERE BannedSub='" + SellerUser + "' ;";
+            return dbMan.ExecuteNonQuery(query);
+        }
+        public DataTable SelectOrder(string OrderID)
+        {
+            string query = "SELECT * FROM Orders WHERE OrderID='" + OrderID + "';";
+            return dbMan.ExecuteReader(query);
+        }
+        public DataTable SelectAllOrders()
+        {
+            string query = "SELECT * FROM Orders;";
+            return dbMan.ExecuteReader(query);
+        }
+        public DataTable SelectCustomer(string username)
+        {
+            string query = "SELECT Customers.CustomerID,Fname,Lname,Email,PhoneNumber,Address,Points FROM Customers,Subscriber WHERE Customers.CustomerID=Subscriber.CustomerID AND Username='" + username + "';";
+            return dbMan.ExecuteReader(query);
+        }
+        public DataTable SelectAllCustomers()
+        {
+            string query = "SELECT * FROM Customers ;";
+            return dbMan.ExecuteReader(query);
+        }
+
     }
 }
