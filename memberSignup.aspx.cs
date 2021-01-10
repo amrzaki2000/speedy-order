@@ -79,16 +79,16 @@ namespace DatabaseProject
                         result = controllerObj.InsertSeller(email, first, last, phonenumber, address, bdate);
                         if (result != 0)
                         {
-                            result2 = controllerObj.InsertSub(username, pass, null, null, null, "Sellers", type);
+                            result2 = controllerObj.InsertSub(username, pass, null, null, "Sellers", null, type);
                             if (result2 == 0)
                                 Response.Write("<script>alert('Sign-Up process was interrupted')</script>");
                             else
                             {
                                 
-                                Session["username"] = username;
-                                Session["userType"] = type;
-                                Session["role"] = "user";
-                                Response.Redirect("WebForm1.aspx");
+                                //Session["username"] = username;
+                                //Session["userType"] = type;
+                                //Session["role"] = "user";
+                                Response.Redirect("userlogin.aspx");
                             }
                         }
                     }

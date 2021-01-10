@@ -762,8 +762,97 @@ namespace DatabaseProject
         }
 
 
+        //===================================================================Product Inventory
+       
+        public DataTable getquantityofProductofwarehouses(string productid)
+        {
+            
+            string query0 = "select * from WarehouseProducts where ProductID='" + productid + "' ;  ";
+            DataTable dt= dbMan.ExecuteReader(query0);
+            if (dt == null)
+            {
+                return dt;
+            }
+            else
+            {
+                string query = "Select sum(QuantityinWarehouse) FROM WarehouseProducts where ProductID='" + productid + "';";
+                return dbMan.ExecuteReader(query);
+            }
+        }
 
 
+        public DataTable getquantityofproduct(string productid)
+        {
+            string query = "select quantity from Products where ProductID='" + productid + "' ;";
+            return dbMan.ExecuteReader(query);
+        }
+
+        public int insertproductinwarehouse(string productid, string warehouseid, string quantity)
+        {
+            try
+            {
+                string query = "insert into WarehouseProducts (WarehouseID,ProductID,QuantityinWarehouse) values('" + warehouseid + "','" + productid + "','" + quantity + "' );";
+                return dbMan.ExecuteNonQuery(query);
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+        }
+
+        public DataTable checkforproductidExcistance(string productid)
+        {
+            string query = "select * from Products WHERE ProductID='" + productid + "'  ;";
+            return dbMan.ExecuteReader(query);
+
+        }
+
+        public DataTable checkforwarehouseExcistance(string warehouseid)
+        {
+            string query = "select * from Warehouse WHERE WarehouseID='" + warehouseid + "'  ;";
+            return dbMan.ExecuteReader(query);
+
+        }
+
+        public int Insertwarehouse(string warehousename, string warehouselocation)
+        {
+            try
+            {
+                string query = "INSERT into Warehouse(WarehouseName,WarehouseLocation) " +
+                    "values('" + warehousename + "','" + warehouselocation + "');";
+                return dbMan.ExecuteNonQuery(query);
+            }
+            catch (Exception exp)
+            {
+                return 0;
+            }
+        }
+        public DataTable getquantityofProductofwarehouse(string productid, string warehouseid)
+        {
+            try
+            {
+                string query = "Select QuantityinWarehouse FROM WarehouseProducts where ProductID='" + productid + "'and WarehouseID='" + warehouseid + "';";
+                return dbMan.ExecuteReader(query);
+            }
+            catch (Exception exp)
+            {
+                Console.WriteLine("Couldn't Connect to database");
+                return null;
+            }
+
+        }
+        public int UpdateQualityStatus(string prodid, string newStatus, string adminid)
+        {
+            try
+            {
+                string query = "Update Products set QualityStatus = '" + newStatus + "' , Quality_Control_Admin='"+adminid+"' where ProductID = '" + prodid + "' ;";
+                return dbMan.ExecuteNonQuery(query);
+            }
+            catch (Exception exp)
+            {
+                return 0;
+            }
+        }
     }
 
 

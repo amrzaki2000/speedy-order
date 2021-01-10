@@ -131,7 +131,7 @@
                     </asp:TemplateField>
                 </Columns>
             </asp:GridView>
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:SpeedyOrderConnectionString %>" SelectCommand="SELECT [ProductID], [ProductName], [Description] AS Description, [Color] AS Color, [Category] AS Category, [Size], [Price], [quantity], [Rating] AS Rating, [prodImg] FROM [Products]"></asp:SqlDataSource>
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:MyConnectionString %>" SelectCommand="SELECT [ProductID], [ProductName], [Description] AS Description, [Color] AS Color, [Category] AS Category, [Size], [Price], [quantity], [Rating] AS Rating, [prodImg] FROM [Products]"></asp:SqlDataSource>
         </div>
         <script type="text/javascript">
             $(function () {

@@ -262,7 +262,7 @@
                             <div class="col">
                                 <div class="form-group">
                                     <h6>Product Management
-                                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=DESKTOP-O1R2Q0Q\SQLEXPRESS01;Initial Catalog=SpeedyOrder2;Integrated Security=True" ProviderName="System.Data.SqlClient" SelectCommand="SELECT * FROM [Products]"></asp:SqlDataSource>
+                                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:MyConnectionString %>" SelectCommand="SELECT * FROM [Products]"></asp:SqlDataSource>
                                     </h6>
                                 </div>
                             </div>
@@ -283,7 +283,7 @@
                         </div>
                         
 
-                        <div class="row">
+                        <div class="row">     <!------------------------------        Grid View ---------------------------------->
                             <div class="col">
                                 <div class="form-group">
                                     <asp:GridView Cssclass="table table-striped table-bordered" ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ProductID" DataSourceID="SqlDataSource3" >
@@ -343,7 +343,7 @@
                            </Columns>
                         </asp:GridView>
 
-                                    <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:SpeedyOrderConnectionString %>" SelectCommand="SELECT [ProductID], [ProductName], [Description], [Category], [Size], [Price], [Rating], [quantity], [prodImg], [Seller], [QualityStatus] FROM [Products] WHERE ([Seller] = @Seller)">
+                                    <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:MyConnectionString %>"  SelectCommand="SELECT [ProductID], [ProductName], [Description], [Category], [Size], [Price], [Rating], [quantity], [prodImg], [Seller], [QualityStatus] FROM [Products] WHERE ([Seller] = @Seller)">
                                         <SelectParameters>
                                             <asp:SessionParameter Name="Seller" SessionField="userID" Type="Int32" />
                                         </SelectParameters>
