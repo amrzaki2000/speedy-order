@@ -64,17 +64,20 @@ namespace DatabaseProject
 
                 if (!Page.IsPostBack)
                 {
-                    dt = controlObj.GetAllsellerProd(Session["userID"].ToString());
-                    DropDownList5.DataSource = dt;
-                    DropDownList5.DataTextField = "ProductID";
-                    DropDownList5.DataValueField = "ProductID";
-                    DropDownList5.DataBind();
+                    
+                        dt = controlObj.GetAllsellerProd(Session["userID"].ToString());
+                        DropDownList5.DataSource = dt;
+                        DropDownList5.DataTextField = "ProductID";
+                        DropDownList5.DataValueField = "ProductID";
+                        DropDownList5.DataBind();
 
-                    DropDownList6.DataSource = dt;
-                    DropDownList6.DataTextField = "ProductID";
-                    DropDownList6.DataValueField = "ProductID";
-                    DropDownList6.DataBind();
+                        DropDownList6.DataSource = dt;
+                        DropDownList6.DataTextField = "ProductID";
+                        DropDownList6.DataValueField = "ProductID";
+                        DropDownList6.DataBind();
+                    
                 }
+              
             }
 
 
@@ -195,6 +198,11 @@ namespace DatabaseProject
         {
             addProduct();
             GridView1.DataBind();
+            if (!Page.IsPostBack)
+            {
+                DropDownList5.DataBind();
+                DropDownList6.DataBind();
+            }
         }
 
         protected void Button3_Click1(object sender, EventArgs e)
@@ -212,6 +220,11 @@ namespace DatabaseProject
         {
             Updateproduct();
             GridView1.DataBind();
+            if (!Page.IsPostBack)
+            {
+                DropDownList5.DataBind();
+                DropDownList6.DataBind();
+            }
         }
 
         protected void Button6_Click(object sender, EventArgs e)
@@ -223,7 +236,12 @@ namespace DatabaseProject
             else
                 Response.Write("<script>alert('Product is deleted successfully')</script>");
             GridView1.DataBind();
-            
+            if (!Page.IsPostBack)
+            {
+                DropDownList5.DataBind();
+                DropDownList6.DataBind();
+            }
+
         }
     }
 }

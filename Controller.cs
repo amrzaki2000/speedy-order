@@ -278,6 +278,107 @@ namespace DatabaseProject
 
         }
 
+        public DataTable SelectAllProducts()
+        {
+            try
+            {
+                string query = "SELECT * FROM PRODUCTS;";
+                return dbMan.ExecuteReader(query);
+            }
+            catch(Exception exp)
+            {
+                Console.WriteLine("There was a problem with the database");
+                return null;
+            }
+        }
+
+       
+        public DataTable SelectAllinCartProd()
+        {
+            try
+            {
+                string query = "SELECT * FROM Incart  ;";
+                return dbMan.ExecuteReader(query);
+            }
+            catch (Exception exp)
+            {
+                Console.WriteLine("There was a problem with the database");
+                return null;
+            }
+        }
+
+        public DataTable getPromo(string promo)
+        {
+            try
+            {
+                string query = "Select CustomerID,p.PromoID,DiscountPrecentage, isused from promocodes as p, usedpromocodes as u " +
+                    " where u.promoid = '" + promo + "'  and p.promoid = '" + promo + "' ;";
+                return dbMan.ExecuteReader(query);
+            }
+            catch(Exception exp)
+            {
+                Console.WriteLine("There was a problem with the database");
+                return null;
+            }
+        }
+
+        public DataTable UseCustomerPromo(string promoid,string customerid)
+        {
+            try
+            {
+                string query = "Update UsedPromoCodes set isused = 'true' where customerid = " + customerid + " and promoid = '" + promoid + "' ;";
+                return dbMan.ExecuteReader(query);
+            }
+            catch(Exception exp)
+            {
+                Console.WriteLine("There was a problem with the database");
+                return null;
+            }
+        }
+
+        public DataTable SelectCustomerCart(string customer)
+        {
+            try
+            {
+                string query = "SELECT * FROM Incart where customerid = "+customer+" ;";
+                return dbMan.ExecuteReader(query);
+            }
+            catch (Exception exp)
+            {
+                Console.WriteLine("There was a problem with the database");
+                return null;
+            }
+        }
+
+
+        public DataTable getCustomertotalprice(string customerid)
+        {
+            try
+            {
+                string query = "select Sum(price) from incart group by customerid having customerid = " + customerid + ";";
+                return dbMan.ExecuteReader(query);
+            }
+            catch(Exception exp)
+            {
+                return null;
+            }
+
+        }
+
+        public DataTable getCustomerpoints(string customerid)
+        {
+            try
+            {
+                string query = "select Sum((price*quantity)/5) from incart group by customerid having customerid = " + customerid + ";";
+                return dbMan.ExecuteReader(query);
+            }
+            catch (Exception exp)
+            {
+                return null;
+            }
+
+        }
+
         //************************* Insertion functions *********************************************//
 
         // Function for inserting a Customer
@@ -441,10 +542,68 @@ namespace DatabaseProject
                 Params.Add("@discountprecent", discountprecent);
                 return dbMan.ExecuteNonQuery(StoredProc, Params);
             }
-            catch
+            catch(Exception exp)
             {
                 return 0;
             }
+        }
+
+
+        //Function Add product to cart
+        public int AddtoCart(string customerid, string productid,string quantity, string prodimg, string price)
+        {
+            try
+            {
+                string query = "Insert into Incart values(" + customerid + ", " + productid + ", " + quantity + ", '"+prodimg+"', "+price+" );";
+                return dbMan.ExecuteNonQuery(query);
+            }
+            catch (Exception exp)
+            {
+                return 0;
+            }
+        }
+
+        //Function for inserting a review of a product
+        public int AddReview(string customerID, string productID,string rating,string descp)
+        {
+            try
+            {
+                string query = "Insert into productreviews values(" + customerID + ", " + productID + "," + rating + ",'" + descp + "');";
+                return dbMan.ExecuteNonQuery(query);
+            }
+            catch(Exception exp)
+            {
+                return 0;
+            }
+        }
+
+
+        public int InsertOrder(string DateCreated, string TotalOrderPrice, string ShippingPrice, string OrderStatus, string DateDelivered, string CustomerID)
+        {
+            try
+            {
+                string query = "INSERT INTO Orders (DateCreated,TotalOrderPrice,ShippingPrice,OrderStatus,[DateDelivered ],CustomerID) Values (" + DateCreated + "'," + TotalOrderPrice + "," + ShippingPrice + ",'" + OrderStatus + "','" + DateDelivered + "'," + CustomerID + ");";
+                return dbMan.ExecuteNonQuery(query);
+            }
+            catch(Exception exp)
+            {
+                return 0;
+            }
+
+        }
+
+        public int InsertOrderContent(string ProductID, string Quantity)
+        {
+            try
+            {
+                string query = "INSERT INTO [OrderContent ](OrderID,ProductID,[Quantity ]) Values (IDENT_Current('orders')," + ProductID + "," + Quantity + ");";
+                return dbMan.ExecuteNonQuery(query);
+            }
+            catch(Exception exp)
+            {
+                return 0;
+            }
+
         }
 
 
@@ -525,6 +684,74 @@ namespace DatabaseProject
             }
         }
 
+        public int updatecustomerpoints(string points, string customerid)
+        {
+            try
+            {
+                string query = "Update Customers set Points='" + points + "' where CustomerID='" + customerid + "' ;";
+                return dbMan.ExecuteNonQuery(query);
+            }
+            catch (Exception exp)
+            {
+                return 0;
+            }
+        }
+
+
+        public int UpdateProductQ(string productID, string quantity)
+        {
+            try
+            {
+                string query = "Update Products set quantity=quantity-" + quantity + " where ProductID=" + productID + " ;";
+                return dbMan.ExecuteNonQuery(query);
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
+        public int updateprofitandincome(string productid, string income, string profit)
+        {
+            try
+            {
+                string query = "Update sellers set Income=Income+" + income + ", profit=profit+" + profit + "  where sellerid in  ( select seller from products where ProductID = " + productid + " );";
+                return dbMan.ExecuteNonQuery(query);
+            }
+            catch (Exception exp)
+            {
+                return 0;
+            }
+
+        }
+
+        public int UpdateWarehouseQ(string productID,string quantity)
+        {
+            try
+            {
+                string query = "update WarehouseProducts set QuantityinWarehouse = QuantityinWarehouse - "+quantity+" where productID = ;";
+                return dbMan.ExecuteNonQuery(query);
+            }
+            catch (Exception exp)
+            {
+                return 0;
+            }
+
+        }
+
+        public int setOutofStock(string productID)
+        {
+            try
+            {
+                string query = "update products set QualityStatus = 'Out of Stock'  where productID = "+productID+" ;";
+                return dbMan.ExecuteNonQuery(query);
+            }
+            catch (Exception exp)
+            {
+                return 0;
+            }
+
+        }
         public int BannSeller(int BanningAdmin, string BannedSub, string ReasonOfSusbension)
         {
             try
@@ -679,8 +906,32 @@ namespace DatabaseProject
             }
         }
 
+        public DataTable AVG_AllProductReviews(string id)
+        {
+            try
+            {
+                string query = "Select AVG(Rating) from ProductReviews where ProductID = " + id + " ;";
+                return dbMan.ExecuteReader(query);
+            }
+            catch(Exception exp)
+            {
+                return null;
+            }
+        }
 
-        //*************Removing functions////////////////
+        public int UpdateProductRating(string id, string rating)
+        {
+            try
+            {
+                string query = "Update Products set rating =" + rating + " where productid = " + id + ";";
+                return dbMan.ExecuteNonQuery(query);
+            }
+            catch(Exception exp)
+            {
+                return 0;
+            }
+        }
+
         public int UpdarePromocode(string promoid, string discountprecent)
         {
             try
@@ -756,6 +1007,32 @@ namespace DatabaseProject
                 return dbMan.ExecuteNonQuery(query);
             }
             catch (Exception ex)
+            {
+                return 0;
+            }
+        }
+
+        public int DeletefromCart(string productid, string customerid)
+        {
+            try
+            {
+                string query = "DELETE FROM Incart WHERE PRODUCTID = " + productid + " and CUSTOMERID = " + customerid + " ;";
+                return dbMan.ExecuteNonQuery(query);
+            }
+            catch(Exception exp)
+            {
+                return 0;
+            }
+        }
+
+        public int clearCustomerCart(string customerid)
+        {
+            try
+            {
+                string query = "DELETE FROM Incart WHERE CustomerID = " + customerid + ";";
+                return dbMan.ExecuteNonQuery(query); 
+            }
+            catch(Exception exp)
             {
                 return 0;
             }

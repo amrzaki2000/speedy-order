@@ -45,7 +45,7 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <asp:Button ID="Button3" runat="server" Text="Sign up" class="btn btn-primary btn-block"/>
+                                    <asp:Button ID="Button3" runat="server" Text="Sign up" class="btn btn-primary btn-block" OnClick="Button3_Click"/>
                                     </div>
                             </div>      
                             

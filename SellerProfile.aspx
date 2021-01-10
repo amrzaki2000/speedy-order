@@ -343,7 +343,7 @@
                            </Columns>
                         </asp:GridView>
 
-                                    <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:SpeedyOrderConnectionString %>" SelectCommand="SELECT [ProductID], [ProductName], [Description], [Category], [Size], [Price], [Rating], [quantity], [prodImg], [Seller], [QualityStatus] FROM [Products] WHERE ([Seller] = @Seller)">
+                                    <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:MyConnectionString %>" SelectCommand="SELECT [ProductID], [ProductName], [Description], [Category], [Size], [Price], [Rating], [quantity], [prodImg], [Seller], [QualityStatus] FROM [Products] WHERE ([Seller] = @Seller)">
                                         <SelectParameters>
                                             <asp:SessionParameter Name="Seller" SessionField="userID" Type="Int32" />
                                         </SelectParameters>

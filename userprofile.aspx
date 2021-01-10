@@ -163,7 +163,77 @@
                         <hr>
                         <div class="row">
                             <div class="col">
-                                <asp:GridView CssClass="table table-stripped table-bordered table-hover" ID="GridView1" runat="server"></asp:GridView>
+                                <asp:GridView ID="GridView1" CssClass="table table-striped table-hover" runat="server" AutoGenerateColumns="False" DataKeyNames="ProductID" DataSourceID="SqlDataSource1">
+                <Columns>
+                    <asp:TemplateField>
+                        <ItemTemplate>
+                            <div class="container-fluid1" style="text-align: left">
+                                <div class="row">
+                                    <div class="col-lg-10">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <asp:Label ID="Label1" runat="server" CssClass="badge badge-pill badge-light" Text='<%# Eval("ProductName") %>' Font-Bold="True" Font-Size="Large"></asp:Label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label class="badge badge-pill badge-success">Category</label>
+                                                    <br />
+                                                    <asp:Label ID="Label2" runat="server" Text='<%# Eval("Category") %>'></asp:Label>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label class="badge badge-pill badge-warning">Size</label>
+                                                    <br />
+                                                    <asp:Label ID="Label4" runat="server" Text='<%# Eval("Size") %>'></asp:Label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label class="badge badge-pill badge-danger">Price</label>
+                                                    <br />
+                                                    <i class="fa fa-money-bill" style="color:green;"></i>
+                                                    <asp:Label ID="Label3" runat="server" Text='<%# Eval("Price") %>'></asp:Label>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label class="badge badge-pill badge-primary">Rating</label>
+                                                    <br />
+                                                    <i class="fa fa-star" style="color:orange;"></i>
+                                                    <asp:Label ID="Label8" runat="server" Text='<%# Eval("Rating") %>'></asp:Label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label class="badge badge-pill badge-info">Quantity</label>
+                                                    <br />
+                                                    <asp:Label ID="Label5" runat="server" Text='<%# Eval("Quantity") %>'></asp:Label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                       
+                                       
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <asp:Image class="img-fluid" ID="Image1" runat="server" ImageUrl='<%# Eval("prodImg") %>' />
+                                    </div>
+
+                                </div>
+                            </div>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+            </asp:GridView>
+                                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:MyConnectionString %>" SelectCommand="Select o.OrderID, p.ProductID,ProductName,Category,Size,Price,Rating,os.quantity,QualityStatus,prodImg from Orders as o, Products as p, OrderContent as os where o.orderid = os.orderid and p.productid = os.productid"></asp:SqlDataSource>
                             </div>
                         </div>
                     </div>
@@ -171,4 +241,18 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+            $(function () {
+                $(".table").prepend($("<thead></thead>").append($(this).find("tr:first"))).dataTable({
+                    "paging": true,
+                    "lengthChange": true,
+                    "searching": true,
+                    "ordering": true,
+                    "info": true,
+                    "autoWidth": true,
+                    "responsive": true,
+
+                });
+            })
+    </script>
 </asp:Content>

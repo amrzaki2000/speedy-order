@@ -44,6 +44,7 @@
                                                 <div class="form-group">
                                                     <label class="badge badge-pill badge-danger">Price</label>
                                                     <br />
+                                                    <i class="fa fa-money-bill" style="color:green;"></i>
                                                     <asp:Label ID="Label3" runat="server" Text='<%# Eval("Price") %>'></asp:Label>
                                                 </div>
                                             </div>
@@ -51,6 +52,7 @@
                                                 <div class="form-group">
                                                     <label class="badge badge-pill badge-primary">Rating</label>
                                                     <br />
+                                                    <i class="fa fa-star" style="color:orange;"></i>
                                                     <asp:Label ID="Label8" runat="server" Text='<%# Eval("Rating") %>'></asp:Label>
                                                 </div>
                                             </div>
@@ -87,7 +89,7 @@
                                                 <div class="row">
                                                     <div class="col-12">
                                                         <div class="form-group">
-                                                            <asp:TextBox ID="TextBox2" runat="server" TextMode="Number" placeholder="Quantity"></asp:TextBox>
+                                                            <asp:TextBox ID="TextBox2" Width="100" runat="server" TextMode="Number" placeholder="Quantity"></asp:TextBox>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -97,7 +99,7 @@
                                         <div class="row">
                                             <div class="col">
                                                 <div class="form-group">
-                                                    <label class="badge badge-pill badge-success">Rating</label>
+                                                    <asp:Label ID="Label7" CssClass="badge badge-pill badge-success" runat="server" Text="Label">Rating</asp:Label>
                                                     <asp:DropDownList ID="DropDownList1" runat="server">
                                                         <asp:ListItem>1</asp:ListItem>
                                                         <asp:ListItem>2</asp:ListItem>
@@ -111,12 +113,12 @@
                                         <div class="row">
                                             <div class="col-6">
                                                 <div class="form-group">
-                                                    <asp:Button ID="Button1"  CssClass="btn btn-warning btn-block" runat="server" Text="Submit Review" />
+                                                    <asp:Button ID="Button1"  CssClass="btn btn-warning btn-block" runat="server" Text="Submit Review" OnCommand="Button1_Command" CommandArgument='<%# Container.DataItemIndex %>' />
                                                 </div>
                                             </div>
                                             <div class="col-6">
                                                 <div class="form-group">
-                                                    <asp:Button ID="Button2" CssClass="btn btn-danger btn-block" runat="server" Text="Add to Cart" />
+                                                    <asp:Button ID="Button2" CssClass="btn btn-danger btn-block" runat="server" Text="Add to Cart" OnCommand="Button2_Command" CommandArgument='<%# Container.DataItemIndex %>'/>
                                                 </div>
                                             </div>
                                         </div>
@@ -131,7 +133,7 @@
                     </asp:TemplateField>
                 </Columns>
             </asp:GridView>
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:SpeedyOrderConnectionString %>" SelectCommand="SELECT [ProductID], [ProductName], [Description] AS Description, [Color] AS Color, [Category] AS Category, [Size], [Price], [quantity], [Rating] AS Rating, [prodImg] FROM [Products]"></asp:SqlDataSource>
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:MyConnectionString %>" SelectCommand="SELECT [ProductID], [ProductName], [Description] AS Description, [Color] AS Color, [Category] AS Category, [Size], [Price], [quantity], [Rating] AS Rating, [prodImg] FROM [Products]"></asp:SqlDataSource>
         </div>
         <script type="text/javascript">
             $(function () {

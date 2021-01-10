@@ -80,9 +80,9 @@
  
                         </li>
                     </ul>
-                                   <a id="imgCart" href="cart.aspx"><asp:image id="imgCart" runat="server" imageurl="imgs/cart.png" style="width:30px; height:30px;" /></a>
+                               <a id="imgCart" href="cart.aspx"><asp:image id="imgCart" runat="server" imageurl="imgs/cart.png" style="width:30px; height:30px;" /></a
 
-                    <!--<img src="imgs/cart.png" width="30px" height="30px" />=-->
+                    <!--<img src="imgs/cart.png" width="30px" height="30px" />
 
                 </div>
 

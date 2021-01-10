@@ -54,5 +54,10 @@ namespace DatabaseProject
                 Response.Write("<script>alert('Invalid credentials ERROR');</script>");
             }
         }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("membersignup.aspx");
+        }
     }
 }
