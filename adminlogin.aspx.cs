@@ -48,7 +48,7 @@ namespace DatabaseProject
                     Session["Password"] = TextBox1.Text.Trim();
                     Session["userType"] = userType;
                     Session["role"] = "customerservice";
-                    Session["userID"] = dt.Rows[0][5].ToString();
+                    Session["EmployeeID"] = dt.Rows[0][5].ToString();
                     Response.Redirect("Customerservice.aspx");
                 }
 

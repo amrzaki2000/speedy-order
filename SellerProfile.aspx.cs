@@ -60,7 +60,7 @@ namespace DatabaseProject
                     Label2.CssClass = "badge badge-pill badge-danger";
 
                 }
-                GridView1.Visible = false;
+                GridView1.Visible = false;          //Hide the Gridview
 
                 if (!Page.IsPostBack)
                 {
@@ -139,7 +139,7 @@ namespace DatabaseProject
                 DataTable dt = controlObj.GetSellerID(Session["username"].ToString());
                 if (dt != null)
                 {
-                    int result = controlObj.InsertProd(name, Description, color, category, Size, price, "0", quantity, "null", "Pending Approval",dt.Rows[0][0].ToString(), filepath);
+                    int result = controlObj.InsertProd(name, Description, color, category, Size, price, "0", quantity, "null", "pending",dt.Rows[0][0].ToString(), filepath);
                     if(result !=0)
                         Response.Write("<script>alert('Product Inserted Successfully')</script>");
                     else
@@ -191,6 +191,7 @@ namespace DatabaseProject
         protected void Button1_Click(object sender, EventArgs e) //Updates user Information onclick
         {
             Updateprofile();
+            Response.Redirect("sellerprofile.aspx");
         }
 
       
@@ -198,11 +199,10 @@ namespace DatabaseProject
         {
             addProduct();
             GridView1.DataBind();
-            if (!Page.IsPostBack)
-            {
-                DropDownList5.DataBind();
-                DropDownList6.DataBind();
-            }
+            DropDownList5.DataBind();
+            DropDownList6.DataBind();
+            Response.Redirect("sellerprofile.aspx");
+
         }
 
         protected void Button3_Click1(object sender, EventArgs e)
@@ -220,11 +220,9 @@ namespace DatabaseProject
         {
             Updateproduct();
             GridView1.DataBind();
-            if (!Page.IsPostBack)
-            {
-                DropDownList5.DataBind();
-                DropDownList6.DataBind();
-            }
+            DropDownList5.DataBind();
+            DropDownList6.DataBind();
+            Response.Redirect("sellerprofile.aspx");
         }
 
         protected void Button6_Click(object sender, EventArgs e)
@@ -236,11 +234,10 @@ namespace DatabaseProject
             else
                 Response.Write("<script>alert('Product is deleted successfully')</script>");
             GridView1.DataBind();
-            if (!Page.IsPostBack)
-            {
-                DropDownList5.DataBind();
-                DropDownList6.DataBind();
-            }
+            DropDownList5.DataBind();
+            DropDownList6.DataBind();
+            Response.Redirect("sellerprofile.aspx");
+
 
         }
     }

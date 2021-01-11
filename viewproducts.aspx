@@ -6,7 +6,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <!--   Featured products-->
-    <div class="container">
+    <div class="small-container">
         <div class="row2 row-2">
             <h2>All Products</h2>
             <asp:GridView ID="GridView1" CssClass="table table-striped table-hover" runat="server" AutoGenerateColumns="False" DataKeyNames="ProductID" DataSourceID="SqlDataSource1">
@@ -133,7 +133,7 @@
                     </asp:TemplateField>
                 </Columns>
             </asp:GridView>
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:MyConnectionString %>" SelectCommand="SELECT [ProductID], [ProductName], [Description] AS Description, [Color] AS Color, [Category] AS Category, [Size], [Price], [quantity], [Rating] AS Rating, [prodImg] FROM [Products]"></asp:SqlDataSource>
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:MyConnectionString %>" SelectCommand="SELECT [ProductID], [ProductName], [Description] AS Description, [Color] AS Color, [Category] AS Category, [Size], [Price], [quantity], [Rating] AS Rating, [prodImg] FROM [Products] Where qualitystatus = 'pending'" ProviderName="System.Data.SqlClient"></asp:SqlDataSource>
         </div>
         <script type="text/javascript">
             $(function () {

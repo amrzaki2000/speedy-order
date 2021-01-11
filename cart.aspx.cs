@@ -66,7 +66,7 @@ namespace DatabaseProject
         {
             
             controlObj.clearCustomerCart(Session["userID"].ToString());
-            
+            Response.Redirect("cart.aspx");
             
         }
 

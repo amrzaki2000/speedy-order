@@ -108,7 +108,7 @@ namespace DatabaseProject
         {
             try
             {
-                string query = "select Fname,Lname,Email,BirthDate, PhoneNumber, Address, Salary, WorkingHours, SuperID from Admins as c,Subscriber as s " +
+                string query = "select Fname,Lname,Email, PhoneNumber, Address, Salary, WorkingHours, SuperID from CustomerService as c,Subscriber as s " +
                     " where c.EmployeeID = s.EmployeeID and s.Username = '" + username + "';";
                 return dbMan.ExecuteReader(query);
             }
@@ -195,7 +195,7 @@ namespace DatabaseProject
         {
             try
             {
-                string query = "SELECT * FROM Orders WHERE OrderID='" + OrderID + "';";
+                string query = "SELECT OrderID,DateCreated, TotalOrderPrice, ShippingPrice,OrderStatus, [DateDelivered ] as Datedelivered, CustomerID FROM Orders WHERE OrderID='" + OrderID + "';";
                 return dbMan.ExecuteReader(query);
             }
             catch (Exception exp)
@@ -209,7 +209,7 @@ namespace DatabaseProject
         {
             try
             {
-                string query = "SELECT * FROM Orders;";
+                string query = "SELECT OrderID,DateCreated, TotalOrderPrice, ShippingPrice,OrderStatus, [DateDelivered ] as Datedelivered, CustomerID FROM Orders;";
                 return dbMan.ExecuteReader(query);
             }
             catch (Exception exp)
@@ -355,7 +355,7 @@ namespace DatabaseProject
         {
             try
             {
-                string query = "select Sum(price) from incart group by customerid having customerid = " + customerid + ";";
+                string query = "select Sum(price*quantity) from incart group by customerid having customerid = " + customerid + ";";
                 return dbMan.ExecuteReader(query);
             }
             catch(Exception exp)
@@ -378,6 +378,95 @@ namespace DatabaseProject
             }
 
         }
+
+        public DataTable SelectCustomerBoughtProducts(string customerid)
+        {
+            try
+            {
+                string query = "Select o.OrderID, p.ProductID,ProductName,Category,Size,Price,Rating,os.quantity,prodImg from Orders as o, Products as p, OrderContent as os" +
+                    " where o.orderid = os.orderid and p.productid = os.productid and o.customerid = " + customerid + " ;";
+                return dbMan.ExecuteReader(query);
+            }
+            catch(Exception exp)
+            {
+                return null;
+            }
+        }
+
+        public DataTable SelectPendingReturned()
+        {
+            try
+            {
+                string query = "SELECT * from Returned WHERE status = 'pending' ;";
+                return dbMan.ExecuteReader(query);
+            }
+            catch(Exception exp)
+            {
+                return null;
+            }
+        }
+
+        public DataTable SelectAllReturnedProducts()
+        {
+            try
+            {
+                string query = "SELECT* FROM Returned";
+                return dbMan.ExecuteReader(query);
+            }
+
+            catch (Exception exp)
+            {
+                return null;
+            }
+
+        }
+
+        public DataTable SelectQualityStatusProducts(string status)
+        {
+            try
+            {
+                string query = "SELECT* FROM Products WHERE QualityStatus = '"+status+"' ";
+                return dbMan.ExecuteReader(query);
+            }
+
+            catch (Exception exp)
+            {
+                return null;
+            }
+
+        }
+
+        public DataTable SelectAllWarehousesProducts()
+        {
+            try
+            {
+                string query = "SELECT* FROM WarehouseProducts;";
+                return dbMan.ExecuteReader(query);
+            }
+
+            catch (Exception exp)
+            {
+                return null;
+            }
+
+        }
+
+
+        public int GrantPromo(string promoid, string customerid)
+        {
+            try
+            {
+                string query = "Insert into UsedPromoCodes values('"+promoid+"',"+customerid+", 'false');";
+                return dbMan.ExecuteNonQuery(query);
+            }
+
+            catch (Exception exp)
+            {
+                return 0;
+            }
+
+        }
+
 
         //************************* Insertion functions *********************************************//
 
@@ -403,6 +492,19 @@ namespace DatabaseProject
 
             }
             catch (Exception exp)
+            {
+                return 0;
+            }
+        }
+
+        public int InsertComplaint(string order, string product, string customer,string status,string des)
+        {
+            try
+            {
+                string query = "Insert into Complaints values( "+order+", "+product+","+customer+", null, '"+status+"', '"+des+"',null );";
+                return dbMan.ExecuteNonQuery(query);
+            }
+            catch(Exception exp)
             {
                 return 0;
             }
@@ -582,7 +684,7 @@ namespace DatabaseProject
         {
             try
             {
-                string query = "INSERT INTO Orders (DateCreated,TotalOrderPrice,ShippingPrice,OrderStatus,[DateDelivered ],CustomerID) Values (" + DateCreated + "'," + TotalOrderPrice + "," + ShippingPrice + ",'" + OrderStatus + "','" + DateDelivered + "'," + CustomerID + ");";
+                string query = "INSERT INTO Orders (DateCreated,TotalOrderPrice,ShippingPrice,OrderStatus,[DateDelivered ],CustomerID) Values ('" + DateCreated + "'," + TotalOrderPrice + "," + ShippingPrice + ",'" + OrderStatus + "','" + DateDelivered + "'," + CustomerID + ");";
                 return dbMan.ExecuteNonQuery(query);
             }
             catch(Exception exp)
@@ -606,7 +708,18 @@ namespace DatabaseProject
 
         }
 
-
+        public int InsertinReturned(string productID, string customerID, string reason)
+        {
+            try
+            {
+                string query = "INSERT into Returned values('" + customerID + "','" + productID + "','" + reason + "',Pending);";
+                return dbMan.ExecuteNonQuery(query);
+            }
+            catch
+            {
+                return 0;
+            }
+        }
 
 
         /*************************************************************************************************/
@@ -772,7 +885,7 @@ namespace DatabaseProject
             try
             {
                 //string query = "SELECT *FROM Banned ;";
-                string query = "SELECT BanningAdmin, BannedSub, ReasonOfSusbension AppealStatus,AppealDescription FROM Banned,Subscriber WHERE BannedSub = UserName AND UserType = 'Seller'";
+                string query = "SELECT BanningAdmin, BannedSub, ReasonOfSusbension, AppealStatus,AppealDescription FROM Banned,Subscriber WHERE BannedSub = UserName AND UserType = 'Seller'";
 
                 return dbMan.ExecuteReader(query);
             }
@@ -788,7 +901,7 @@ namespace DatabaseProject
             try
             {
                 //string query = "SELECT *FROM Banned ;";
-                string query = "SELECT BanningAdmin, BannedSub, ReasonOfSusbension AppealStatus,AppealDescription FROM Banned,Subscriber WHERE BannedSub = UserName AND UserType = 'Customer'";
+                string query = "SELECT BanningAdmin, BannedSub, ReasonOfSusbension, AppealStatus,AppealDescription FROM Banned,Subscriber WHERE BannedSub = UserName AND UserType = 'Customer'";
 
                 return dbMan.ExecuteReader(query);
             }
@@ -999,11 +1112,11 @@ namespace DatabaseProject
             return dbMan.ExecuteReader(query);
         }
 
-        public int ComplaintReply(string resbond, string orderid, string ID, string employeeid)
+        public int ComplaintReply(string response, string complaintID, string employeeid)
         {
             try
             {
-                string query = "UPDATE Complaints  SET [Respond]='" + resbond + "',[Status]='Replied' ,EmployeeID='" + employeeid + "' WHERE [OrderID]='" + orderid + "' AND CustomerID='" + ID + "';";
+                string query = "UPDATE Complaints  SET [Respond]='" + response + "',[Status]='Replied' ,EmployeeID='" + employeeid + "' WHERE [ComplaintID]='" + complaintID + "';";
                 return dbMan.ExecuteNonQuery(query);
             }
             catch (Exception ex)
@@ -1130,9 +1243,114 @@ namespace DatabaseProject
                 return 0;
             }
         }
+
+        public DataTable checkforComplaintIDexistance(string complaintID)            //Function to check if login credintials are right
+        {
+            string query = "select * from Complaints WHERE ComplaintID='" + complaintID + "'  ;";
+            return dbMan.ExecuteReader(query);
+        }
+
+        public DataTable checkreturnProductExistence(string customerID, string productID)            //Function to check if login credintials are right
+        {
+            string query = "select * from Returned WHERE CustomerID='" + customerID + "' and ProductID='" + productID + "' ;";
+            return dbMan.ExecuteReader(query);
+        }
+        public int ReturnProduct(string customerID, string prodID)
+        {
+            try
+            {
+                string query = "UPDATE Returned SET Status= 'Returned' WHERE ProductID='" + prodID + "' and CustomerID='" + customerID + "' ;";
+                string query2 = "UPDATE Products SET quantity= (quantity+1) WHERE ProductID='" + prodID + "' ;";
+                dbMan.ExecuteNonQuery(query2);
+                return dbMan.ExecuteNonQuery(query);
+            }
+            catch (Exception exp)
+            {
+                Console.WriteLine("There was a problem with the database");
+                return 0;
+            }
+
+        }
+
+
+        /////////////////////////////////////////////// Statistical queries //////////////////////////////////////////////////////
+
+        public DataTable TotalIncome()
+        {
+
+            try
+            {
+                string query = "Select SUM(TotalOrderPrice) from Orders";
+
+                return dbMan.ExecuteReader(query);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        public DataTable NumEmployees()
+        {
+            string query = "Select COUNT(Username) from Subscriber where UserType='Seller' OR UserType='Customer'";
+            return dbMan.ExecuteReader(query);
+        }
+        public DataTable NumSellers()
+        {
+            string query = "Select COUNT(Fname) from Sellers";
+            return dbMan.ExecuteReader(query);
+        }
+        public DataTable NumCustomers()
+        {
+            string query = "Select COUNT(Fname) from Sellers";
+            return dbMan.ExecuteReader(query);
+        }
+        public DataTable NumProducts()
+        {
+            string query = "Select COUNT(ProductID) from Products";
+            return dbMan.ExecuteReader(query);
+        }
+        public DataTable NumQuantity()
+        {
+            string query = "Select SUM(quantity) from Products";
+            return dbMan.ExecuteReader(query);
+        }
+        public DataTable TotalSalaries()
+        {
+            string query = "Select SUM(Salary) from CustomerService UNION Select SUM(Salary) from Admins";
+            return dbMan.ExecuteReader(query);
+        }
+
+        public DataTable NumOrders()
+        {
+            string query = "Select COUNT(OrderID) from Orders";
+            return dbMan.ExecuteReader(query);
+        }
+        public DataTable NumReturns()
+        {
+            string query = "Select COUNT(CustomerID) from Returned";
+            return dbMan.ExecuteReader(query);
+        }
+        public DataTable NumPromo()
+        {
+            string query = "Select COUNT(PromoID) from PromoCodes";
+            return dbMan.ExecuteReader(query);
+        }
+        public DataTable NumPromosUsed()
+        {
+            string query = "Select COUNT(PromoID) from UsedPromoCodes";
+            return dbMan.ExecuteReader(query);
+        }
+        public DataTable TotalBans()
+        {
+            string query = "Select COUNT(BanningAdminID) from Banned";
+            return dbMan.ExecuteReader(query);
+        }
     }
 
 
 
 }
+
+///
+
 

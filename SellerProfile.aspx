@@ -208,13 +208,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <center>
-                            <div class="col">
-                                    <img style="width:150px"  src="imgs/stats.png" />
-                            </div>
-                                </center>
-                            </div>
+                           
 
                             <div class="row">
                                 <div class="col">
@@ -238,15 +232,7 @@
                                     </div>
                                 </div>
                             </div>
-                             <div class="row">
-                                <div class="col">
-                                    <div class="form-group">
-                                        <label>Total Sold Products</label>
-                                         <asp:TextBox ID="TextBox27" runat="server" placeholder="sold" Disabled="true"></asp:TextBox>
-                                    </div>
-                                </div>
-                                
-                            </div>
+                             
 
                         </div>
 
@@ -262,7 +248,6 @@
                             <div class="col">
                                 <div class="form-group">
                                     <h6>Product Management
-                                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=DESKTOP-O1R2Q0Q\SQLEXPRESS01;Initial Catalog=SpeedyOrder2;Integrated Security=True" ProviderName="System.Data.SqlClient" SelectCommand="SELECT * FROM [Products]"></asp:SqlDataSource>
                                     </h6>
                                 </div>
                             </div>

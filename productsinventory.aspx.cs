@@ -20,8 +20,18 @@ namespace DatabaseProject
         {
             controlObj = new Controller();              //Creating Controller Object
             val = new InputValidation();
-            GridView1.DataBind();
-            GridView1.Visible = false;
+            if (Session["username"] == null)
+            {
+                Response.Redirect("adminlogin.aspx");
+            }
+            else { 
+                if (!Page.IsPostBack)
+                {
+                    GridView1.DataBind();
+                    GridView1.Visible = false;
+                }
+            }
+            
         }
 
         
@@ -61,8 +71,8 @@ namespace DatabaseProject
         protected void SqlDataSource1_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
         {
 
-        }
 
+        }
         protected void ProductGridView_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -86,9 +96,9 @@ namespace DatabaseProject
             }
             else
             {
-               
+
+                GridView1.DataSource = controlObj.GetProduct(id);
                 GridView1.Visible = true;
-                SqlDataSource3.SelectCommand = "SELECT * FROM Products WHERE ProductID = " + id + ";";
                 GridView1.DataBind();
             }
 
@@ -96,25 +106,29 @@ namespace DatabaseProject
 
         protected void Button4_Click(object sender, EventArgs e)    //view all products
         {
+            GridView1.DataSource = controlObj.SelectAllProducts();
             GridView1.Visible = true;
-            SqlDataSource3.SelectCommand = "SELECT * FROM Products ;";
             GridView1.DataBind();
         }
         //================================================================================================= Quality Control========================
 
         protected void Button11_Click(object sender, EventArgs e) // view all pending
         {
-            SqlDataSource3.SelectCommand = "SELECT * FROM Products WHERE QualityStatus = 'Pending' OR QualityStatus = 'pending' ;";
+            GridView1.DataSource = controlObj.SelectQualityStatusProducts("pending");
+            GridView1.Visible = true;
+            GridView1.DataBind();
         }
         protected void Button20_Click(object sender, EventArgs e) // view disapproved
         {
-            SqlDataSource3.SelectCommand = "SELECT * FROM Products WHERE QualityStatus = 'Disapproved' OR QualityStatus = 'disapproved' ;";
-
+            GridView1.DataSource = controlObj.SelectQualityStatusProducts("disapproved");
+            GridView1.Visible = true;
+            GridView1.DataBind();
         }
         protected void Button8_Click(object sender, EventArgs e) // view approved
         {
-            SqlDataSource3.SelectCommand = "SELECT * FROM Products WHERE QualityStatus = 'Approved' OR QualityStatus = 'approved' ;";
-
+            GridView1.DataSource = controlObj.SelectQualityStatusProducts("approved");
+            GridView1.Visible = true;
+            GridView1.DataBind();
         }
         protected void Button10_Click(object sender, EventArgs e) //view product description
         {
@@ -140,7 +154,7 @@ namespace DatabaseProject
         protected void Button1_Click(object sender, EventArgs e) //approve
         {
             string prodid = TextBox2.Text.Trim();
-            string adminid = TextBox4.Text.Trim();
+            string adminid = Session["adminID"].ToString();
             
             if (prodid.Length == 0 || adminid.Length == 0 || (Int32.Parse(adminid) < 0) || (Int32.Parse(prodid) < 0) )
             {
@@ -162,7 +176,7 @@ namespace DatabaseProject
         protected void Button9_Click(object sender, EventArgs e) //Disapprove
         {
             string prodid = TextBox2.Text.Trim();
-            string adminid = TextBox4.Text.Trim();
+            string adminid = Session["adminID"].ToString();
 
             if (prodid.Length == 0 || adminid.Length == 0 || (Int32.Parse(adminid) < 0) || (Int32.Parse(prodid) < 0))
             {
@@ -257,7 +271,6 @@ namespace DatabaseProject
             
             string warehouseName = TextBox13.Text.Trim();
             string warehouseLocation = TextBox14.Text.Trim();
-            //string warehouseid = TextBox6.Text.Trim();
             if (warehouseName.Length == 0 || warehouseLocation.Length == 0 )
             {
                 Response.Write("<script>alert('Please fill in all requirments')</script>");
@@ -333,7 +346,9 @@ namespace DatabaseProject
 
         protected void Button3_Click(object sender, EventArgs e)  //view all products
         {
-            SqlDataSource3.SelectCommand = "SELECT * FROM WarehouseProducts ;";
+            GridView1.DataSource = controlObj.SelectAllWarehousesProducts();
+            GridView1.Visible = true;
+            GridView1.DataBind();
         }
 
         

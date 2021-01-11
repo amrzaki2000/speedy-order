@@ -51,6 +51,9 @@ namespace DatabaseProject
                 {
                     if (val.CheckifemailExists(email,"Customers"))
                         Response.Write("<script>alert('Email is already registered. Log in or use another email or change your user type')</script>");
+                    else if(!val.isPositive(Int32.Parse(phonenumber)))
+                        Response.Write("<script>alert('Please enter a valid phone number')</script>");
+
                     else
                     {
                         result = controllerObj.InsertCustomer(email, first, last, phonenumber, address, bdate);
@@ -72,6 +75,8 @@ namespace DatabaseProject
                 {
                     if (val.CheckifemailExists(email, "Sellers"))
                         Response.Write("<script>alert('Email is already registered. Log in or use another email or change your user type')</script>");
+                    else if (!val.isPositive(Int32.Parse(phonenumber)))
+                        Response.Write("<script>alert('Please enter a valid phone number')</script>");
                     else
                     {
                         result = controllerObj.InsertSeller(email, first, last, phonenumber, address, bdate);

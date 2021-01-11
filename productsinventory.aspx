@@ -69,19 +69,14 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Product ID</label>
                                     <asp:TextBox CssClass="form-control" ID="TextBox2" runat="server" TextMode="Number" placeholder="Product ID"></asp:TextBox>
                                 </div>
 
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Admin ID</label>
-                                    <asp:TextBox CssClass="form-control" ID="TextBox4" runat="server" TextMode="Number" placeholder="Admin ID"></asp:TextBox>
-                                </div>
-                            </div>
+                            
                         </div>
                         <div class="row">
                             <div class="col">
@@ -249,68 +244,11 @@
                         <div class="row">     <!------------------------------        Grid View ---------------------------------->
                             <div class="col">
                                 <div class="form-group">
-                                    <asp:GridView Cssclass="table table-striped table-bordered" ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ProductID" DataSourceID="SqlDataSource3" >
-                           <Columns>
-                              <asp:BoundField DataField="ProductID" HeaderText="ID" ReadOnly="True" SortExpression="ProductID" >
-                                 <ControlStyle Font-Bold="True" />
-                                 <ItemStyle Font-Bold="True" />
-                              </asp:BoundField>
-                              <asp:TemplateField>
-                                 <ItemTemplate>
-                                    <div class="container-fluid1" style="text-align:left">
-                                       <div class="row">
-                                          <div class="col-lg-10">
-                                             <div class="row">
-                                                <div class="col-12">
-                                                   <asp:Label ID="Label1" runat="server" Text='<%# Eval("ProductName") %>' Font-Bold="True" Font-Size="X-Large"></asp:Label>
-                                                </div>
-                                             </div>
-                                             <div class="row">
-                                                <div class="col-12">
-                                                   <span>Category - </span>
-                                                   <asp:Label ID="Label2" runat="server" Font-Bold="True" Text='<%# Eval("Category") %>'></asp:Label>
-                                                   &nbsp;| <span><span>&nbsp;
-                                                   <span>
-                                                      Size -<span>&nbsp;</span>
-                                                      <asp:Label ID="Label4" runat="server" Font-Bold="True" Text='<%# Eval("Size") %>'></asp:Label>
-                                                   </span>
-                                                </div>
-                                             </div>
-                                             <div class="row">
-                                                <div class="col-12">
-                                                   Price -
-                                                   <asp:Label ID="Label5" runat="server" Font-Bold="True" Text='<%# Eval("Price") %>'></asp:Label>
-                                                   &nbsp;| Rating -
-                                                   <asp:Label ID="Label6" runat="server" Font-Bold="True" Text='<%# Eval("Rating") %>'></asp:Label>
-                                                   &nbsp;| Quantity -
-                                                   <asp:Label ID="Label7" runat="server" Font-Bold="True" Text='<%# Eval("quantity") %>'></asp:Label>
-                                                   &nbsp;| Quality -
-                                                   <asp:Label ID="Label8" runat="server" Font-Bold="True" Text='<%# Eval("QualityStatus") %>'></asp:Label>
-                                                </div>
-                                             </div>
-                                             
-                                             <div class="row">
-                                                <div class="col-12">
-                                                   Description -
-                                                   <asp:Label ID="Label12" runat="server" Font-Bold="True" Font-Italic="True" Font-Size="Smaller" Text='<%# Eval("Description") %>'></asp:Label>
-                                                </div>
-                                             </div>
-                                          </div>
-                                          <div class="col-lg-2">
-                                             <asp:Image class="img-fluid" ID="Image1" runat="server" ImageUrl='<%# Eval("prodImg") %>' />
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </ItemTemplate>
-                              </asp:TemplateField>
-                           </Columns>
+                                    <asp:GridView Cssclass="table table-striped table-bordered" ID="GridView1" runat="server">
+                          
                         </asp:GridView>
 
-                                    <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:MyConnectionString %>"  SelectCommand="SELECT [ProductID], [ProductName], [Description], [Category], [Size], [Price], [Rating], [quantity], [prodImg], [Seller], [QualityStatus] FROM [Products] WHERE ([Seller] = @Seller)">
-                                        <SelectParameters>
-                                            <asp:SessionParameter Name="Seller" SessionField="userID" Type="Int32" />
-                                        </SelectParameters>
-                                    </asp:SqlDataSource>
+                                  
 
                                 </div>
                             </div>

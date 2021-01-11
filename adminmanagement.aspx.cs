@@ -19,10 +19,21 @@ namespace DatabaseProject
         {
             controllerObj = new Controller();
             val = new InputValidation();
-            GridView1.DataBind();
+
             if (Session["username"] == null)
             {
                 Response.Redirect("adminlogin.aspx");
+            }
+            else
+            {
+                if (!Page.IsPostBack)
+                {
+                    GridView1.DataSource = controllerObj.SelectAllSeller();
+                    GridView1.DataSource = controllerObj.SelectAllSeller();
+                    GridView1.DataBind();
+                }
+
+                
             }
         }
 
@@ -54,9 +65,14 @@ namespace DatabaseProject
                 result = controllerObj.UpdateAdmin(username, fname, lname, phonenumber, address);
                 if (result != 0)
                 {
+                    
                     result2 = controllerObj.UpdatesubsAdmin(username, newpass);
                     if (result2 == 0)
                         Response.Write("<script>alert('updating process was interrupted')</script>");
+                    else
+                    {
+                        Session["Password"] = newpass;
+                    }
                 }
 
             }
@@ -290,15 +306,30 @@ namespace DatabaseProject
         protected void Button10_Click(object sender, EventArgs e) //Get Seller
         {
             DataTable dt = controllerObj.SelectSeller(TextBox8.Text);
-            //GridView1.DataSource = dt;
-            //GridView1.DataBind();
+            if (dt == null)
+            {
+                Response.Write("<script>alert('Customer not found !')</script>");
+            }
+            else
+            {
+                GridView1.DataSource = dt;
+                GridView1.DataBind();
+            }
         }
 
         protected void Button11_Click(object sender, EventArgs e) // view all Sellers
         {
             DataTable dt = controllerObj.SelectAllSeller();
-            //GridView1.DataSource = dt;
-            //GridView1.DataBind();
+            if (dt == null)
+            {
+                Response.Write("<script>alert('Customer not found !')</script>");
+            }
+            else
+            {
+                GridView1.DataSource = dt;
+                GridView1.DataBind();
+            }
+
         }
 
         protected void Button12_Click(object sender, EventArgs e) //Ban Seller
@@ -311,7 +342,7 @@ namespace DatabaseProject
                 Response.Write("<script>alert('The insertion of a new Banned seller failed  Please fill in Reason of Suspension');</script>");
                 return;
             }
-            int result = controllerObj.BannSeller(Convert.ToInt32(Session["adminID"]), TextBox9.Text, TextBox10.Text);
+            int result = controllerObj.BannSeller(Convert.ToInt32(Session["adminID"]), TextBox9.Text.Trim(), TextBox10.Text.Trim());
             if (result == 0)
             {
                 Response.Write("<script>alert('The insertion of a new Banned seller failed');</script>");
@@ -327,8 +358,16 @@ namespace DatabaseProject
         protected void Button13_Click(object sender, EventArgs e)  //view Banned sellers
         {
             DataTable dt = controllerObj.SelectAllBannedSellers();
-            //GridView1.DataSource = dt;
-            //GridView1.DataBind();
+            if (dt == null)
+            {
+                Response.Write("<script>alert('Customer not found !')</script>");
+            }
+            else
+            {
+                GridView1.DataSource = dt;
+                GridView1.DataBind();
+            }
+
 
         }
 
@@ -348,33 +387,54 @@ namespace DatabaseProject
 
         protected void Button20_Click(object sender, EventArgs e) //Get Order
         {
-            DataTable dt = controllerObj.SelectOrder(TextBox11.Text);
-            //GridView1.DataSource = dt;
-            //GridView1.DataBind();
+            DataTable dt = controllerObj.SelectOrder(TextBox11.Text.Trim());
+            if (dt == null)
+            {
+                Response.Write("<script>alert('Customer not found !')</script>");
+            }
+            else
+            {
+                OrdersGridView.DataSource = dt;
+                OrdersGridView.DataBind();
+            }
 
         }
 
         protected void Button16_Click(object sender, EventArgs e)// View all Orders
         {
             DataTable dt = controllerObj.SelectAllOrders();
-            //GridView1.DataSource = dt;
-            //GridView1.DataBind();
+            if (dt == null)
+            {
+                Response.Write("<script>alert('Customer not found !')</script>");
+            }
+            else
+            {
+                OrdersGridView.DataSource = dt;
+                OrdersGridView.DataBind();
+            }
 
         }
         //                              ====================================  Customer Management  =============
         protected void Button2_Click(object sender, EventArgs e)  //Get Customer
         {
-            DataTable dt = controllerObj.SelectCustomer(TextBox1.Text);
-            //GridView1.DataSource = dt;
-            //GridView1.DataBind();
+            DataTable dt = controllerObj.SelectCustomer(TextBox1.Text.Trim());
+            if (dt == null)
+            {
+                Response.Write("<script>alert('Customer not found !')</script>");
+            }
+            else
+            {
+                CustomerGridView.DataSource = dt;
+                CustomerGridView.DataBind();
+            }
 
         }
 
         protected void Button4_Click(object sender, EventArgs e) //Get All Customers
         {
             DataTable dt = controllerObj.SelectAllCustomers();
-            //GridView1.DataSource = dt;
-            //GridView1.DataBind();
+            CustomerGridView.DataSource = dt;
+            CustomerGridView.DataBind();
 
         }
 
@@ -388,7 +448,7 @@ namespace DatabaseProject
                 Response.Write("<script>alert('The insertion of a new Banned Customer failed  Please fill in Reason of Suspension');</script>");
                 return;
             }
-            int result = controllerObj.BannSeller(Convert.ToInt32(Session["adminID"]), TextBox3.Text, TextBox7.Text);
+            int result = controllerObj.BannSeller(Convert.ToInt32(Session["adminID"]), TextBox3.Text.Trim(), TextBox7.Text.Trim());
             if (result == 0)
             {
                 Response.Write("<script>alert('The insertion of a new Banned customer failed');</script>");
@@ -404,8 +464,15 @@ namespace DatabaseProject
         protected void Button5_Click(object sender, EventArgs e) //view  All Banned customer
         {
             DataTable dt = controllerObj.SelectAllBannedCustomers();
-            //GridView1.DataSource = dt;
-            //GridView1.DataBind();
+            if (dt == null)
+            {
+                Response.Write("<script>alert('Customer not found !')</script>");
+            }
+            else
+            {
+                CustomerGridView.DataSource = dt;
+                CustomerGridView.DataBind();
+            }
         }
 
         protected void Button6_Click(object sender, EventArgs e)  // unBan Customer
@@ -418,6 +485,100 @@ namespace DatabaseProject
             else
             {
                 Response.Write("<script>alert('Customer is unbanned successfully!');</script>");
+            }
+        }
+
+        protected void Button17_Click(object sender, EventArgs e)
+        {
+            DataTable dt1, dt2, dt3, dt4, dt5, dt6, dt7, dt8, dt9, dt10, dt11, dt12;
+            dt1 = controllerObj.TotalIncome();
+            dt2 = controllerObj.NumEmployees();
+            dt3 = controllerObj.NumSellers();
+            dt4 = controllerObj.NumCustomers();
+            dt5 = controllerObj.NumProducts();
+            dt6 = controllerObj.NumQuantity();
+            dt7 = controllerObj.TotalSalaries();
+            dt8 = controllerObj.NumOrders();
+            dt9 = controllerObj.NumReturns();
+            dt10 = controllerObj.NumPromo();
+            dt11 = controllerObj.TotalBans();
+            dt12 = controllerObj.NumPromosUsed();
+            dt11 = controllerObj.TotalBans();
+
+            if (dt1 == null)
+            { TextBox25.Text = "0"; }
+            else
+            { TextBox25.Text = dt1.Rows[0][0].ToString(); }
+
+            if (dt2 == null)
+            { TextBox20.Text = "0"; }
+            else
+            { TextBox20.Text = dt2.Rows[0][0].ToString(); }
+
+            if (dt3 == null)
+            { TextBox21.Text = "0"; }
+            else
+            { TextBox21.Text = dt3.Rows[0][0].ToString(); }
+
+            if (dt4 == null)
+            { TextBox22.Text = "0"; }
+            else
+            { TextBox22.Text = dt4.Rows[0][0].ToString(); }
+
+            if (dt5 == null)
+            { TextBox23.Text = "0"; }
+            else
+            { TextBox23.Text = dt5.Rows[0][0].ToString(); }
+
+            if (dt6 == null)
+            { TextBox24.Text = "0"; }
+            else
+            { TextBox24.Text = dt6.Rows[0][0].ToString(); }
+
+            if (dt7 == null)
+            { TextBox26.Text = "0"; }
+            else
+            { TextBox26.Text = (Int32.Parse(dt7.Rows[0][0].ToString()) + Int32.Parse(dt7.Rows[1][0].ToString())).ToString(); }
+
+            if (dt8 == null)
+            { TextBox28.Text = "0"; }
+            else
+            { TextBox28.Text = dt8.Rows[0][0].ToString(); }
+
+            if (dt9 == null)
+            { TextBox29.Text = "0"; }
+            else
+            { TextBox29.Text = dt9.Rows[0][0].ToString(); }
+
+            if (dt10 == null)
+            { TextBox30.Text = "0"; }
+            else
+            { TextBox30.Text = dt10.Rows[0][0].ToString(); }
+
+            if (dt11 == null)
+            { TextBox31.Text = "0"; }
+            else
+            { TextBox31.Text = dt11.Rows[0][0].ToString(); }
+
+            if (dt12 == null)
+            { TextBox32.Text = "0"; }
+            else
+            { TextBox32.Text = dt12.Rows[0][0].ToString(); }
+
+        }
+
+        protected void Button7_Click(object sender, EventArgs e)
+        {
+            int result = controllerObj.GrantPromo(TextBox6.Text.Trim(), TextBox5.Text.Trim());
+            if(result == 0)
+            {
+                Response.Write("<script>alert('Promo code or customer ID do not exist')</script>");
+            }
+            else
+            {
+                Response.Write("<script>alert('Promo code is granted successfully')</script>");
+
+
             }
         }
 
